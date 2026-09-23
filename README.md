@@ -128,11 +128,92 @@ python3 -m pytest -q
 
 ---
 
-## Tool catalog
+## Tool catalog (all names)
 
-HexStrike-class names are tagged `origin=hexstrike`. EKay-only names are `origin=ekay`.
+Legend: **Previous** = already in HexStrike’s arsenal. **New** = added in EKay (not in the HexStrike README).
 
-**EKay-only (not in HexStrike README):** naabu, dnsx, Impacket helpers, bettercap, BloodHound, bloodhound-python, PingCastle, kerbrute, ligolo-ng, chisel, kiterunner, schemathesis, wapiti, graphqlmap, gitleaks, grype, steampipe, cewl, aircrack-ng, wifite, kismet, hcxdumptool, yara, osqueryi, gophish, swaks, o365spray, roadtx, faraday-cli.
+Counts: **117 Previous** + **30 New** = **147** catalog entries (`GET /health` → `catalog`).
+
+### Network / pentest
+
+| Status | Tools |
+| --- | --- |
+| Previous | nmap, rustscan, masscan, autorecon, arp-scan, nbtscan, rpcclient, enum4linux, enum4linux-ng, smbmap, responder, netexec |
+| New | naabu, bettercap, ligolo-ng, chisel |
+
+### Web application pentest
+
+| Status | Tools |
+| --- | --- |
+| Previous | gobuster, feroxbuster, dirsearch, ffuf, dirb, httpx, katana, hakrawler, nuclei, nikto, sqlmap, wpscan, arjun, dalfox, wafw00f, jaeles, testssl, sslscan, sslyze, whatweb, jwt-tool, wfuzz, commix, nosqlmap, tplmap, x8, zap, qsreplace |
+| New | kiterunner, schemathesis, wapiti, graphqlmap |
+
+### OSINT / recon
+
+| Status | Tools |
+| --- | --- |
+| Previous | amass, subfinder, fierce, dnsenum, theharvester, gau, waybackurls, paramspider, sherlock, social-analyzer, recon-ng, maltego, spiderfoot, trufflehog, subjack, aquatone, anew, uro |
+| New | dnsx, gitleaks |
+
+### Password cracking / authentication
+
+| Status | Tools |
+| --- | --- |
+| Previous | hydra, john, hashcat, medusa, patator, crackmapexec, evil-winrm, hash-identifier, hashid, ophcrack |
+| New | cewl, impacket-secretsdump, impacket-getnpusers |
+
+### Active Directory / identity
+
+| Status | Tools |
+| --- | --- |
+| Previous | *(HexStrike had NetExec/CME-class network auth, not a BloodHound/Azure pack)* |
+| New | bloodhound, bloodhound-python, pingcastle, kerbrute, o365spray, roadtx |
+
+### Cloud / container pentest
+
+| Status | Tools |
+| --- | --- |
+| Previous | prowler, scout-suite, trivy, kube-hunter, kube-bench, docker-bench-security, falco, checkov, terrascan, pacu, kubectl, helm, aws, az, gcloud, clair, cloudmapper, cloudsploit, opa |
+| New | grype, steampipe |
+
+### Binary / reverse engineering / exploit-dev (lab)
+
+| Status | Tools |
+| --- | --- |
+| Previous | gdb, radare2, ghidra, binwalk, checksec, ropgadget, ropper, one-gadget, pwntools, angr, msfvenom, strings, objdump, readelf, upx, xxd, hexdump, pwninit |
+| New | — |
+
+### Forensics / IR
+
+| Status | Tools |
+| --- | --- |
+| Previous | volatility3, foremost, steghide, exiftool, autopsy, photorec, testdisk, stegsolve, bulk-extractor, zsteg, outguess, scalpel |
+| New | yara, osqueryi |
+
+### Wireless (authorized RF only)
+
+| Status | Tools |
+| --- | --- |
+| Previous | — |
+| New | aircrack-ng, wifite, kismet, hcxdumptool |
+
+### Social engineering / phishing simulation (approved campaigns only)
+
+| Status | Tools |
+| --- | --- |
+| Previous | — |
+| New | gophish, swaks |
+
+### Reporting
+
+| Status | Tools |
+| --- | --- |
+| Previous | — |
+| New | faraday-cli |
+
+### New-only list (copy/paste)
+
+`naabu` `dnsx` `impacket-secretsdump` `impacket-getnpusers` `bettercap` `bloodhound` `bloodhound-python` `pingcastle` `kerbrute` `ligolo-ng` `chisel` `kiterunner` `schemathesis` `wapiti` `graphqlmap` `gitleaks` `grype` `steampipe` `cewl` `aircrack-ng` `wifite` `kismet` `hcxdumptool` `yara` `osqueryi` `gophish` `swaks` `o365spray` `roadtx` `faraday-cli`
 
 Intrusive/restricted binaries **will not execute** until:
 
