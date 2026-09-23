@@ -1,4 +1,4 @@
-"""EKay HTTP control plane. Authenticated, loopback by default, no raw shell API."""
+"""EKay HTTP control plane. HexStrike-style: no token by default. Loopback bind. No raw shell API."""
 
 from __future__ import annotations
 
@@ -25,7 +25,8 @@ def _env_list(name: str, default: str) -> list[str]:
 
 
 def create_app() -> Flask:
-    token = os.environ.get("EKAY_TOKEN", "change-me-before-demo")
+    # HexStrike-style: no token by default. Set EKAY_TOKEN only if you want a lock.
+    token = os.environ.get("EKAY_TOKEN", "").strip()
     scope = ScopeGuard(_env_list("EKAY_SCOPE", "127.0.0.1,localhost,scanme.nmap.org"))
     allow_intrusive = os.environ.get("EKAY_ALLOW_INTRUSIVE", "0") == "1"
     timeout = int(os.environ.get("EKAY_TOOL_TIMEOUT", "180"))
@@ -48,9 +49,10 @@ def create_app() -> Flask:
     }
 
     def _auth() -> tuple[dict, int] | None:
+        if not token:
+            return None
         header = request.headers.get("Authorization", "")
-        expected = f"Bearer {token}"
-        if header != expected:
+        if header != f"Bearer {token}":
             return jsonify({"error": "unauthorized"}), 401
         return None
 
@@ -71,6 +73,7 @@ def create_app() -> Flask:
                 "intrusive_enabled": allow_intrusive,
                 "concurrency": workers,
                 "architecture": "trigger-bus-concurrent",
+                "auth_required": bool(token),
             }
         )
 
@@ -215,7 +218,7 @@ def create_app() -> Flask:
                 "total": len(CATALOG),
                 "differences": [
                     "Concurrent trigger-bus agents, not a single sequential planner",
-                    "Mandatory API bearer token",
+                    "Optional token (off by default, HexStrike-style MCP)",
                     "ScopeGuard before every binary",
                     "No /api/command raw shell",
                     "Intrusive tools gated by EKAY_ALLOW_INTRUSIVE",

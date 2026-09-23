@@ -12,9 +12,12 @@ import httpx
 
 
 def _client(base: str, token: str) -> httpx.Client:
+    headers = {}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
     return httpx.Client(
         base_url=base.rstrip("/"),
-        headers={"Authorization": f"Bearer {token}"},
+        headers=headers,
         timeout=float(os.environ.get("EKAY_MCP_TIMEOUT", "300")),
     )
 
@@ -22,7 +25,7 @@ def _client(base: str, token: str) -> httpx.Client:
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="EKay MCP stdio bridge")
     parser.add_argument("--server", default=os.environ.get("EKAY_URL", "http://127.0.0.1:8787"))
-    parser.add_argument("--token", default=os.environ.get("EKAY_TOKEN", "change-me-before-demo"))
+    parser.add_argument("--token", default=os.environ.get("EKAY_TOKEN", ""))
     args = parser.parse_args(argv)
 
     try:

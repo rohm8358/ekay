@@ -15,15 +15,14 @@ def _url() -> str:
 
 
 def _token() -> str:
-    return os.environ.get("EKAY_TOKEN", "change-me-before-demo")
+    return os.environ.get("EKAY_TOKEN", "").strip()
 
 
 def _http() -> httpx.Client:
-    return httpx.Client(
-        base_url=_url(),
-        headers={"Authorization": f"Bearer {_token()}"},
-        timeout=30.0,
-    )
+    headers = {}
+    if _token():
+        headers["Authorization"] = f"Bearer {_token()}"
+    return httpx.Client(base_url=_url(), headers=headers, timeout=30.0)
 
 
 def main(argv: list[str] | None = None) -> int:

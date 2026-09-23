@@ -16,7 +16,7 @@ PhD / Kali lab project. Author: [rohm8358](https://github.com/rohm8358). MIT lic
 | --- | --- | --- |
 | Control flow | Single LLM planner, sequential tool calls | **TriggerBus** — many agents, each with a predicate, **parallel** |
 | API shell | Documented `/api/command` arbitrary commands | **No raw shell API** |
-| Auth | Local Flask often unauthenticated | **Bearer token required** (except `/health`) |
+| Auth | Local Flask, no login | **Same default: no token.** Optional `EKAY_TOKEN` if you want a lock |
 | Scope | Wrong flags can scan out of scope | **ScopeGuard** before every binary |
 | Tool schemas | 150+ MCP tools dumped every LLM turn | **7 meta MCP tools**; catalog is queried |
 | Health | Historically blocked on many `which` subprocesses | `shutil.which` + cache |
@@ -55,70 +55,41 @@ When recon finishes, EKay emits `port.open` events. **httpx and nuclei start at 
 ## Quick start (Kali)
 
 ```bash
-sudo git clone https://github.com/rohm8358/ekay.git
+git clone https://github.com/rohm8358/ekay.git
 cd ekay
 python3 -m venv ekay-env
 source ekay-env/bin/activate
 pip install -r requirements.txt
-cp .env.example .env
-# edit EKAY_TOKEN to a long random string
-export $(grep -v '^#' .env | xargs)
-chmod +x scripts/install_kali.sh scripts/demo_kali.sh
-# optional: sudo ./scripts/install_kali.sh
-python3 -m ekay serve
+
+# Terminal 1 — same idea as hexstrike_server.py
+python3 ekay/server.py
 ```
 
 In another terminal:
 
 ```bash
-export EKAY_TOKEN='your-token-from-.env'
-export EKAY_URL=http://127.0.0.1:8787
-
 python3 -m ekay health
 python3 -m ekay tools --origin ekay
 python3 -m ekay compare
-
-# Legal public test host from Nmap project — still confirm policy with your supervisor
 python3 -m ekay engage scanme.nmap.org
 sleep 10
 python3 -m ekay agents
-
 python3 -m ekay run nmap scanme.nmap.org
 ```
 
-Or one-shot demo:
+Or: `./scripts/demo_kali.sh`
+
+### curl (HexStrike-style — no Authorization header)
 
 ```bash
-EKAY_TOKEN=kali-demo-token ./scripts/demo_kali.sh
-```
-
-### curl (same as HexStrike-style writeups)
-
-```bash
-# health does not require a token
 curl -s http://127.0.0.1:8787/health | jq .
-
-# catalog
-curl -s -H "Authorization: Bearer $EKAY_TOKEN" \
-  http://127.0.0.1:8787/api/tools | jq '.count'
-
-# only new EKay tools
-curl -s -H "Authorization: Bearer $EKAY_TOKEN" \
-  'http://127.0.0.1:8787/api/tools?origin=ekay' | jq '.tools[].name'
-
-# concurrent engagement
+curl -s http://127.0.0.1:8787/api/tools | jq '.count'
+curl -s 'http://127.0.0.1:8787/api/tools?origin=ekay' | jq '.tools[].name'
 curl -s -X POST http://127.0.0.1:8787/api/engagements \
-  -H "Authorization: Bearer $EKAY_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"target":"scanme.nmap.org"}' | jq .
-
-# agent timeline
-curl -s -H "Authorization: Bearer $EKAY_TOKEN" \
-  http://127.0.0.1:8787/api/agents | jq .
-
-# one tool
+curl -s http://127.0.0.1:8787/api/agents | jq .
 curl -s -X POST http://127.0.0.1:8787/api/tools/nmap/run \
-  -H "Authorization: Bearer $EKAY_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"target":"scanme.nmap.org","args":["-Pn"]}' | jq '.returncode,.duration_ms'
 ```
@@ -127,8 +98,10 @@ curl -s -X POST http://127.0.0.1:8787/api/tools/nmap/run \
 
 ## Cursor / Claude MCP
 
-1. Start `python3 -m ekay serve`
-2. Copy `ekay-mcp.json` into Cursor MCP config and set the real path + `EKAY_TOKEN`
+Same two-process model as HexStrike (`hexstrike_server.py` + `hexstrike_mcp.py`).
+
+1. Start the server: `python3 ekay/server.py`
+2. Add this to Cursor MCP (`~/.cursor/mcp.json` or Claude desktop config). **No token.**
 
 ```json
 {
@@ -136,7 +109,6 @@ curl -s -X POST http://127.0.0.1:8787/api/tools/nmap/run \
     "ekay": {
       "command": "python3",
       "args": ["/absolute/path/ekay/ekay/mcp_server.py", "--server", "http://127.0.0.1:8787"],
-      "env": { "EKAY_TOKEN": "your-token" },
       "timeout": 300
     }
   }
@@ -177,12 +149,12 @@ and the target is inside `EKAY_SCOPE`.
 | Endpoint | Auth | Description |
 | --- | --- | --- |
 | `GET /health` | no | Catalog size, installed count, concurrency |
-| `GET /api/tools` | yes | Filter `family`, `origin` |
-| `POST /api/tools/<name>/run` | yes | `{target, args[]}` |
-| `POST /api/engagements` | yes | Start concurrent agents |
-| `GET /api/agents` | yes | Job list |
-| `GET /api/evidence` | yes | JSONL records |
-| `GET /api/compare/hexstrike` | yes | Difference list |
+| `GET /api/tools` | no (unless `EKAY_TOKEN` set) | Filter `family`, `origin` |
+| `POST /api/tools/<name>/run` | no (unless `EKAY_TOKEN` set) | `{target, args[]}` |
+| `POST /api/engagements` | no (unless `EKAY_TOKEN` set) | Start concurrent agents |
+| `GET /api/agents` | no (unless `EKAY_TOKEN` set) | Job list |
+| `GET /api/evidence` | no (unless `EKAY_TOKEN` set) | JSONL records |
+| `GET /api/compare/hexstrike` | no (unless `EKAY_TOKEN` set) | Difference list |
 
 There is **no** `/api/command`.
 
@@ -192,7 +164,7 @@ There is **no** `/api/command`.
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
-| `EKAY_TOKEN` | `change-me-before-demo` | API bearer token |
+| `EKAY_TOKEN` | empty | Optional. Empty = HexStrike-style open local API |
 | `EKAY_HOST` | `127.0.0.1` | Bind address |
 | `EKAY_PORT` | `8787` | Bind port |
 | `EKAY_SCOPE` | `127.0.0.1,localhost,scanme.nmap.org` | Allowed hosts/CIDRs |

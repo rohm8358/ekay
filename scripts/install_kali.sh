@@ -21,4 +21,4 @@ python3 -m venv /opt/ekay-env || python3 -m venv "$HOME/ekay-env"
 source /opt/ekay-env/bin/activate 2>/dev/null || source "$HOME/ekay-env/bin/activate"
 pip install -U pip
 pip install -r "$(dirname "$0")/../requirements.txt"
-echo "[ekay] Python deps ready. Copy .env.example to .env and set EKAY_TOKEN."
+echo "[ekay] Python deps ready. Start with: python3 ekay/server.py"
