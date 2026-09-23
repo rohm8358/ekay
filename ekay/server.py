@@ -15,6 +15,7 @@ from ekay.catalog import CATALOG, CATALOG_BY_NAME, families
 from ekay.evidence import EvidenceStore
 from ekay.runner import ToolRunner
 from ekay.scope import ScopeError, ScopeGuard
+from ekay.status import catalog_report, tool_status
 
 VERSION = "1.0.0"
 
@@ -58,22 +59,46 @@ def create_app() -> Flask:
 
     @app.get("/health")
     def health():
-        avail = runner.availability()
-        installed = sum(1 for ok in avail.values() if ok)
+        report = catalog_report(runner)
         return jsonify(
             {
                 "ok": True,
                 "name": "ekay",
                 "version": VERSION,
                 "bind": f"{os.environ.get('EKAY_HOST', '127.0.0.1')}:{os.environ.get('EKAY_PORT', '8787')}",
-                "catalog": len(CATALOG),
-                "installed": installed,
+                "catalog": report["catalog"],
+                "ready": report["ready"],
+                "installed": report["ready"] + report["gated"],
+                "missing": report["missing"],
+                "gated": report["gated"],
                 "families": families(),
                 "uptime_s": int(time.time() - app.config["EKAY"]["started"]),
                 "intrusive_enabled": allow_intrusive,
                 "concurrency": workers,
                 "architecture": "trigger-bus-concurrent",
                 "auth_required": bool(token),
+                "honest_note": report["note"],
+            }
+        )
+
+    @app.get("/api/doctor")
+    def doctor():
+        denied = _auth()
+        if denied:
+            return denied
+        report = catalog_report(runner)
+        status_filter = request.args.get("status")
+        tools = report["tools"]
+        if status_filter:
+            tools = [t for t in tools if t["status"] == status_filter]
+        return jsonify(
+            {
+                "catalog": report["catalog"],
+                "ready": report["ready"],
+                "missing": report["missing"],
+                "gated": report["gated"],
+                "note": report["note"],
+                "tools": tools,
             }
         )
 
@@ -84,11 +109,18 @@ def create_app() -> Flask:
             return denied
         q_family = request.args.get("family")
         q_origin = request.args.get("origin")
+        q_status = request.args.get("status")  # ready|missing|gated
+        only_ready = request.args.get("only_ready", "0") == "1"
         items = []
         for spec in CATALOG:
             if q_family and spec.family != q_family:
                 continue
             if q_origin and spec.origin != q_origin:
+                continue
+            status = tool_status(spec, runner)
+            if only_ready and status != "ready":
+                continue
+            if q_status and status != q_status:
                 continue
             items.append(
                 {
@@ -98,7 +130,8 @@ def create_app() -> Flask:
                     "risk": spec.risk,
                     "origin": spec.origin,
                     "summary": spec.summary,
-                    "installed": bool(runner.which(spec.binary)),
+                    "status": status,
+                    "installed": status != "missing",
                 }
             )
         return jsonify({"count": len(items), "tools": items})

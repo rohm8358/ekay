@@ -52,7 +52,30 @@ When recon finishes, EKay emits `port.open` events. **httpx and nuclei start at 
 
 ---
 
-## Quick start (Kali)
+## Honest tooling note (read this)
+
+**No — downloading EKay does not make all 234 tools “healthy.”**
+
+EKay is an **orchestrator + catalog**, like HexStrike. It does **not** ship Nmap, Nuclei, Hashcat, Gophish, MobSF, etc. inside the git repo.
+
+| Status | Meaning |
+| --- | --- |
+| `ready` | Binary found on `PATH` and allowed by policy |
+| `gated` | Binary installed, but blocked until `EKAY_ALLOW_INTRUSIVE=1` |
+| `missing` | Not installed on this Kali — run will return `blocked_reason`, not crash the server |
+
+After clone:
+
+```bash
+sudo ./scripts/install_kali.sh   # best-effort apt/go/pip
+python3 -m ekay doctor           # shows ready / missing / gated
+python3 ekay/server.py
+curl -s http://127.0.0.1:8787/health | jq '{catalog,ready,missing,gated}'
+```
+
+Cursor MCP lists **`only_ready=true` by default**, so the LLM should not call tools that are not on PATH.
+
+---
 
 ```bash
 git clone https://github.com/rohm8358/ekay.git
@@ -273,12 +296,13 @@ There is **no** `/api/command`.
 
 ## What a supervisor should see in 5 minutes
 
-1. `GET /health` shows `architecture: trigger-bus-concurrent` and a large catalog.
-2. `POST /api/engagements` returns multiple `agents_fired_on_start`.
-3. `GET /api/agents` shows **recon** plus **http_probe** and **nuclei** overlapping in time (if those ports exist / tools installed).
-4. Out-of-scope host returns **403**.
-5. `hydra` without `EKAY_ALLOW_INTRUSIVE` returns `blocked_reason`.
-6. `pytest -q` is green.
+1. `GET /health` shows `architecture: trigger-bus-concurrent`, `catalog`, `ready`, `missing`, `gated`.
+2. `python3 -m ekay doctor` explains what is actually installed.
+3. `POST /api/engagements` returns multiple `agents_fired_on_start`.
+4. `GET /api/agents` shows **recon** plus **http_probe** and **nuclei** overlapping in time (if those ports exist / tools installed).
+5. Out-of-scope host returns **403**.
+6. `hydra` without `EKAY_ALLOW_INTRUSIVE` returns `blocked_reason` (gated), missing tools return `blocked_reason` (not a crash).
+7. `pytest -q` is green.
 
 ---
 

@@ -39,17 +39,27 @@ def main(argv: list[str] | None = None) -> None:
 
     @mcp.tool()
     def ekay_health() -> dict[str, Any]:
-        """Server health, catalog size, installed binary count."""
+        """Server health: catalog size, ready/missing/gated binary counts."""
         return http.get("/health").json()
 
     @mcp.tool()
-    def ekay_list_tools(family: str = "", origin: str = "") -> dict[str, Any]:
-        """List catalog tools. origin=hexstrike|ekay. family=network|web|..."""
-        params = {}
+    def ekay_doctor(status: str = "") -> dict[str, Any]:
+        """Diagnose tools. status=ready|missing|gated or empty for full report."""
+        params = {"status": status} if status else {}
+        resp = http.get("/api/doctor", params=params)
+        resp.raise_for_status()
+        return resp.json()
+
+    @mcp.tool()
+    def ekay_list_tools(family: str = "", origin: str = "", only_ready: bool = True) -> dict[str, Any]:
+        """List tools. Default only_ready=True so Cursor never sees missing binaries."""
+        params: dict[str, str] = {}
         if family:
             params["family"] = family
         if origin:
             params["origin"] = origin
+        if only_ready:
+            params["only_ready"] = "1"
         resp = http.get("/api/tools", params=params)
         resp.raise_for_status()
         return resp.json()
