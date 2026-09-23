@@ -268,8 +268,9 @@ and the target is inside `EKAY_SCOPE`.
 
 | Endpoint | Auth | Description |
 | --- | --- | --- |
-| `GET /health` | no | Catalog size, installed count, concurrency |
-| `GET /api/tools` | no (unless `EKAY_TOKEN` set) | Filter `family`, `origin` |
+| `GET /health` | no | `catalog` / `ready` / `missing` / `gated` |
+| `GET /api/doctor` | no (unless token) | Full per-tool status list |
+| `GET /api/tools` | no (unless `EKAY_TOKEN` set) | Filter `family`, `origin`, `status`, `only_ready=1` |
 | `POST /api/tools/<name>/run` | no (unless `EKAY_TOKEN` set) | `{target, args[]}` |
 | `POST /api/engagements` | no (unless `EKAY_TOKEN` set) | Start concurrent agents |
 | `GET /api/agents` | no (unless `EKAY_TOKEN` set) | Job list |

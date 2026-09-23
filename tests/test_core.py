@@ -1,6 +1,7 @@
 from ekay.bus import Event, TriggerBus
 from ekay.scope import ScopeError, ScopeGuard
 from ekay.runner import RunnerError, ToolRunner
+from ekay.status import catalog_report
 
 
 def test_scope_allows_listed_host():
@@ -34,6 +35,14 @@ def test_intrusive_blocked_without_flag():
     result = r.run("hydra", "127.0.0.1")
     assert result.blocked_reason
     assert "intrusive" in result.blocked_reason
+
+
+def test_catalog_report_counts_match():
+    g = ScopeGuard(["127.0.0.1"])
+    r = ToolRunner(g, allow_intrusive=False)
+    report = catalog_report(r)
+    assert report["catalog"] == report["ready"] + report["missing"] + report["gated"]
+    assert report["catalog"] >= 200
 
 
 class _A:
