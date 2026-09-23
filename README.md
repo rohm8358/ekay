@@ -22,7 +22,7 @@ PhD / Kali lab project. Author: [rohm8358](https://github.com/rohm8358). MIT lic
 | Health | Historically blocked on many `which` subprocesses | `shutil.which` + cache |
 | Dangerous tools | Same path as nmap | **Risk classes** + `EKAY_ALLOW_INTRUSIVE` |
 | Evidence | Logs / visual cards | Append-only **JSONL** with argv + output tails |
-| New families | Weak on phishing-sim, BloodHound, wifi, reporting | **Gophish, BloodHound, Kerbrute, Aircrack, Faraday, …** (wrappers) |
+| New families | Weak on phishing-sim, BloodHound, wifi, reporting | **117 new tools**: API, Instagram OSINT, mobile app lab, wifi, phishing-sim, AD/Azure, reporting |
 | Binding | Reports of binding beyond loopback | Default **127.0.0.1** |
 | Windows `/tmp` | Known crash class | `tempfile` evidence dir |
 
@@ -132,51 +132,60 @@ python3 -m pytest -q
 
 Legend: **Previous** = already in HexStrike’s arsenal. **New** = added in EKay (not in the HexStrike README).
 
-Counts: **117 Previous** + **30 New** = **147** catalog entries (`GET /health` → `catalog`).
+Counts: **117 Previous** + **117 New** = **234** catalog entries (`GET /health` → `catalog`).
+
+> **Mobile note:** “Phone” tools here are for **authorized mobile-app / owned-device assessment** (MobSF, Frida, ADB, MVT). EKay does **not** wrap remote spyware or unauthorized phone takeover.
 
 ### Network / pentest
 
 | Status | Tools |
 | --- | --- |
 | Previous | nmap, rustscan, masscan, autorecon, arp-scan, nbtscan, rpcclient, enum4linux, enum4linux-ng, smbmap, responder, netexec |
-| New | naabu, bettercap, ligolo-ng, chisel |
+| New | naabu, bettercap, ligolo-ng, chisel, proxychains, socat, nmap-nse-vuln, rustscan-ultrarange |
+
+### API security testing
+
+| Status | Tools |
+| --- | --- |
+| Previous | jwt-tool, ffuf, zap *(generic web; weak dedicated API pack)* |
+| New | kiterunner, schemathesis, mitmproxy, mitmdump, postman, insomnia, httpie, curl-impersonate, graphw00f, clairvoyance, inql, graphql-cop, graphqlmap, restler, apisprout, openapi-generator, spectral |
 
 ### Web application pentest
 
 | Status | Tools |
 | --- | --- |
 | Previous | gobuster, feroxbuster, dirsearch, ffuf, dirb, httpx, katana, hakrawler, nuclei, nikto, sqlmap, wpscan, arjun, dalfox, wafw00f, jaeles, testssl, sslscan, sslyze, whatweb, jwt-tool, wfuzz, commix, nosqlmap, tplmap, x8, zap, qsreplace |
-| New | kiterunner, schemathesis, wapiti, graphqlmap |
+| New | wapiti, hakrawler-deep, gau-plus, waymore, urlfinder, cariddi, interactsh-client, notify |
 
-### OSINT / recon
+### OSINT / recon / Instagram
 
 | Status | Tools |
 | --- | --- |
 | Previous | amass, subfinder, fierce, dnsenum, theharvester, gau, waybackurls, paramspider, sherlock, social-analyzer, recon-ng, maltego, spiderfoot, trufflehog, subjack, aquatone, anew, uro |
-| New | dnsx, gitleaks |
+| New | dnsx, gitleaks, **osintgram**, **instaloader**, **toutatis**, **insto**, maigret, socialscan, holehe, ghunt, phoneinfoga, blackbird, twint, snscrape, metagoofil, exiflooter, photon, finalrecon, reconspider, osrframework |
 
 ### Password cracking / authentication
 
 | Status | Tools |
 | --- | --- |
 | Previous | hydra, john, hashcat, medusa, patator, crackmapexec, evil-winrm, hash-identifier, hashid, ophcrack |
-| New | cewl, impacket-secretsdump, impacket-getnpusers |
+| New | cewl, crunch, cupp, username-anarchy, impacket-secretsdump, impacket-getnpusers, impacket-smbclient, impacket-psexec, sprayhound |
 
 ### Active Directory / identity
 
 | Status | Tools |
 | --- | --- |
-| Previous | *(HexStrike had NetExec/CME-class network auth, not a BloodHound/Azure pack)* |
-| New | bloodhound, bloodhound-python, pingcastle, kerbrute, o365spray, roadtx |
+| Previous | *(NetExec/CME-class only — no BloodHound/Azure pack)* |
+| New | bloodhound, bloodhound-python, pingcastle, kerbrute, o365spray, roadtx, aadinternals, graphrunner, mfasweep |
 
-### Cloud / container pentest
+### Cloud / container
 
 | Status | Tools |
 | --- | --- |
 | Previous | prowler, scout-suite, trivy, kube-hunter, kube-bench, docker-bench-security, falco, checkov, terrascan, pacu, kubectl, helm, aws, az, gcloud, clair, cloudmapper, cloudsploit, opa |
-| New | grype, steampipe |
+| New | grype, steampipe, s3scanner, cloudbrute, enumerate-iam |
 
-### Binary / reverse engineering / exploit-dev (lab)
+### Binary / reverse engineering (lab)
 
 | Status | Tools |
 | --- | --- |
@@ -188,32 +197,39 @@ Counts: **117 Previous** + **30 New** = **147** catalog entries (`GET /health` �
 | Status | Tools |
 | --- | --- |
 | Previous | volatility3, foremost, steghide, exiftool, autopsy, photorec, testdisk, stegsolve, bulk-extractor, zsteg, outguess, scalpel |
-| New | yara, osqueryi |
+| New | yara, osqueryi, sleuthkit |
 
 ### Wireless (authorized RF only)
 
 | Status | Tools |
 | --- | --- |
 | Previous | — |
-| New | aircrack-ng, wifite, kismet, hcxdumptool |
+| New | aircrack-ng, airmon-ng, airodump-ng, aireplay-ng, wifite, kismet, hcxdumptool, hcxpcapngtool, reaver, bully, fern-wifi-cracker, wifiphisher |
 
-### Social engineering / phishing simulation (approved campaigns only)
+### Phishing / social-engineering simulation (approved campaigns only)
 
 | Status | Tools |
 | --- | --- |
 | Previous | — |
-| New | gophish, swaks |
+| New | gophish, king-phisher, setoolkit, evilginx2, modlishka, swaks, hiddeneye, zphisher, socialfish |
+
+### Mobile app / owned-device assessment
+
+| Status | Tools |
+| --- | --- |
+| Previous | — |
+| New | mobsf, frida, frida-ps, objection, apktool, jadx, jadx-gui, drozer, adb, apkleaks, quark-engine, mvt-android, mvt-ios |
 
 ### Reporting
 
 | Status | Tools |
 | --- | --- |
 | Previous | — |
-| New | faraday-cli |
+| New | faraday-cli, sysreptor, pwndoc, defectdojo |
 
-### New-only list (copy/paste)
+### New-only list (117 — copy/paste)
 
-`naabu` `dnsx` `impacket-secretsdump` `impacket-getnpusers` `bettercap` `bloodhound` `bloodhound-python` `pingcastle` `kerbrute` `ligolo-ng` `chisel` `kiterunner` `schemathesis` `wapiti` `graphqlmap` `gitleaks` `grype` `steampipe` `cewl` `aircrack-ng` `wifite` `kismet` `hcxdumptool` `yara` `osqueryi` `gophish` `swaks` `o365spray` `roadtx` `faraday-cli`
+`naabu` `bettercap` `ligolo-ng` `chisel` `proxychains` `socat` `nmap-nse-vuln` `rustscan-ultrarange` `kiterunner` `schemathesis` `mitmproxy` `mitmdump` `postman` `insomnia` `httpie` `curl-impersonate` `graphw00f` `clairvoyance` `inql` `graphql-cop` `graphqlmap` `restler` `apisprout` `openapi-generator` `spectral` `wapiti` `hakrawler-deep` `gau-plus` `waymore` `urlfinder` `cariddi` `interactsh-client` `notify` `dnsx` `gitleaks` `osintgram` `instaloader` `toutatis` `insto` `maigret` `socialscan` `holehe` `ghunt` `phoneinfoga` `blackbird` `twint` `snscrape` `metagoofil` `exiflooter` `photon` `finalrecon` `reconspider` `osrframework` `cewl` `crunch` `cupp` `username-anarchy` `impacket-secretsdump` `impacket-getnpusers` `impacket-smbclient` `impacket-psexec` `sprayhound` `bloodhound` `bloodhound-python` `pingcastle` `kerbrute` `o365spray` `roadtx` `aadinternals` `graphrunner` `mfasweep` `grype` `steampipe` `s3scanner` `cloudbrute` `enumerate-iam` `aircrack-ng` `airmon-ng` `airodump-ng` `aireplay-ng` `wifite` `kismet` `hcxdumptool` `hcxpcapngtool` `reaver` `bully` `fern-wifi-cracker` `wifiphisher` `gophish` `king-phisher` `setoolkit` `evilginx2` `modlishka` `swaks` `hiddeneye` `zphisher` `socialfish` `mobsf` `frida` `frida-ps` `objection` `apktool` `jadx` `jadx-gui` `drozer` `adb` `apkleaks` `quark-engine` `mvt-android` `mvt-ios` `yara` `osqueryi` `sleuthkit` `faraday-cli` `sysreptor` `pwndoc` `defectdojo`
 
 Intrusive/restricted binaries **will not execute** until:
 
@@ -268,4 +284,4 @@ There is **no** `/api/command`.
 
 ## Disclaimer
 
-EKay wraps **local** security programs. Installing Nuclei does not make EKay “autonomous pentest.” The LLM still needs a human engagement, a scope file, and verification of findings. Social-engineering modules are **simulation platforms** (e.g. Gophish) for approved awareness tests, not crimeware.
+EKay wraps **local** security programs. Installing Nuclei does not make EKay “autonomous pentest.” The LLM still needs a human engagement, a scope file, and verification of findings. Social-engineering modules are **simulation platforms** (e.g. Gophish) for approved awareness tests, not crimeware. Mobile entries (Frida, ADB, MobSF) are for **apps and devices you own or are contracted to test** — not remote phone hacking.
