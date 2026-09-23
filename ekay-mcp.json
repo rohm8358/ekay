@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "ekay": {
+      "command": "python3",
+      "args": [
+        "/path/to/ekay/ekay/mcp_server.py",
+        "--server",
+        "http://127.0.0.1:8787"
+      ],
+      "env": {
+        "EKAY_TOKEN": "change-me-before-demo"
+      },
+      "timeout": 300,
+      "disabled": false
+    }
+  }
+}
