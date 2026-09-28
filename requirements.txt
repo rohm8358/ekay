@@ -1,5 +1,9 @@
+# Python packages for the EKay orchestrator ONLY (same idea as HexStrike).
+# The 234 security tools (nmap, nuclei, sqlmap, ...) are Kali system binaries —
+# they are NOT pip packages. Install them with:
+#   sudo ./scripts/install_kali.sh
 flask>=3.0.0
 waitress>=3.0.0
-mcp>=1.2.0
+mcp>=1.2.0,<2
 httpx>=0.27.0
 pytest>=8.0.0

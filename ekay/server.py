@@ -255,7 +255,7 @@ def create_app() -> Flask:
                     "ScopeGuard before every binary",
                     "No /api/command raw shell",
                     "Intrusive tools gated by EKAY_ALLOW_INTRUSIVE",
-                    "MCP exposes few meta-tools; catalog is queried, not dumped every turn",
+                    "MCP exposes 8 meta-tools plus all 234 catalog tools (HexStrike-style)",
                     "Windows-safe temp/evidence paths",
                     "Health uses shutil.which, not blocking which(1) storms",
                     "Evidence JSONL with argv + hashes of outputs tails",

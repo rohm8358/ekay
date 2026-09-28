@@ -1,29 +1,32 @@
 #!/usr/bin/env bash
-# Install as many catalog binaries as Kali apt/go/pip can provide.
-# EKay still will NOT show 234/234 ready — some tools are manual (Gophish, Postman, etc.).
+# Install as many EKay catalog binaries as Kali apt/go/pip can provide.
+# This does NOT make 234/234 ready — some tools are manual (Gophish, MobSF, Postman, …).
 set -euo pipefail
 export DEBIAN_FRONTEND=noninteractive
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 apt-get update
 apt-get install -y \
   python3 python3-venv python3-pip python3-impacket \
   nmap masscan gobuster ffuf nikto sqlmap hydra john hashcat medusa \
-  whatweb wafw00f smbmap enum4linux-ng nbtscan netexec crackmapexec \
+  whatweb wafw00f smbmap enum4linux enum4linux-ng nbtscan netexec \
   binwalk exiftool foremost steghide gdb radare2 checksec \
   aircrack-ng wifite kismet bettercap reaver bully hcxdumptool \
-  bloodhound neo4j \
+  bloodhound \
   seclists curl jq wget git socat proxychains4 \
-  wapiti dirb dirsearch feroxbuster sqlmap \
-  theharvester amass subfinder \
+  wapiti dirb dirsearch feroxbuster \
+  theharvester amass subfinder fierce dnsenum \
   apktool adb \
   yara osquery \
   swaks cewl crunch cupp \
-  steghide autopsy \
   golang-go || true
 
-# Go-based ProjectDiscovery / extras (best-effort)
 export GOPATH="${GOPATH:-$HOME/go}"
 export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
+mkdir -p "$GOPATH/bin"
+
 go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest || true
 go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest || true
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest || true
@@ -31,20 +34,28 @@ go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest || true
 go install -v github.com/projectdiscovery/katana/cmd/katana@latest || true
 go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest || true
 go install -v github.com/projectdiscovery/interactsh/cmd/interactsh-client@latest || true
+go install -v github.com/projectdiscovery/notify/cmd/notify@latest || true
 go install -v github.com/ffuf/ffuf/v2@latest || true
+go install -v github.com/OJ/gobuster/v3@latest || true
+go install -v github.com/tomnomnom/waybackurls@latest || true
+go install -v github.com/lc/gau/v2/cmd/gau@latest || true
+go install -v github.com/hakluke/hakrawler@latest || true
 
 pip3 install --break-system-packages \
   holehe maigret instaloader socialscan objection frida-tools \
-  schemathesis httpie gitleaks 2>/dev/null \
-  || pip3 install holehe maigret instaloader socialscan objection frida-tools schemathesis httpie || true
+  schemathesis httpie arjun || true
 
-python3 -m venv /opt/ekay-env || python3 -m venv "$HOME/ekay-env"
+# Repo Python venv (HexStrike-style)
+if [ ! -d "$REPO_DIR/ekay-env" ]; then
+  python3 -m venv "$REPO_DIR/ekay-env"
+fi
 # shellcheck disable=SC1091
-source /opt/ekay-env/bin/activate 2>/dev/null || source "$HOME/ekay-env/bin/activate"
+source "$REPO_DIR/ekay-env/bin/activate"
 pip install -U pip
-pip install -r "$(dirname "$0")/../requirements.txt"
+pip install -r "$REPO_DIR/requirements.txt"
 
-echo "[ekay] Deps installed (best-effort)."
-echo "[ekay] Run: python3 -m ekay doctor"
-echo "[ekay] Expect many 'missing' until you install optional tools (gophish, mobsf, nuclei templates, etc.)."
-echo "[ekay] Start: python3 ekay/server.py"
+echo
+echo "[ekay] Done."
+echo "[ekay] Start server:  cd $REPO_DIR && source ekay-env/bin/activate && python3 ekay_server.py"
+echo "[ekay] Check tools:   python3 -m ekay doctor"
+echo "[ekay] Expect some 'missing' until optional tools (gophish, mobsf, …) are installed manually."
