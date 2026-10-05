@@ -314,7 +314,40 @@ def _dedupe(items: list[ToolSpec]) -> list[ToolSpec]:
     return list(seen.values())
 
 
-CATALOG: list[ToolSpec] = _dedupe(HEXSTRIKE_TOOLS + EKAY_TOOLS)
+# Dropped from the live catalog: Windows-only, heavy platforms, or installs that
+# could not be made runnable on this Kali host after apt + GitHub/pip best-effort.
+REMOVED_UNINSTALLABLE: frozenset[str] = frozenset(
+    {
+        "docker-bench-security",
+        "gcloud",
+        "cloudmapper",
+        "cloudsploit",
+        "curl-impersonate",
+        "restler",
+        "apisprout",
+        "spectral",
+        "insto",
+        "twint",
+        "exiflooter",
+        "reconspider",
+        "osrframework",
+        "pingcastle",
+        "aadinternals",
+        "graphrunner",
+        "mfasweep",
+        "steampipe",
+        "mobsf",
+        "sysreptor",
+        "pwndoc",
+        "defectdojo",
+        "rusthound",
+    }
+)
+
+
+CATALOG: list[ToolSpec] = [
+    t for t in _dedupe(HEXSTRIKE_TOOLS + EKAY_TOOLS) if t.name not in REMOVED_UNINSTALLABLE
+]
 CATALOG_BY_NAME: dict[str, ToolSpec] = {t.name: t for t in CATALOG}
 
 

@@ -1,32 +1,32 @@
 {
   "name": "ekay",
   "version": "2.0.0",
-  "total": 246,
+  "total": 223,
   "phases": {
-    "ad": 17,
-    "cloud": 24,
+    "ad": 12,
+    "cloud": 19,
     "creds": 19,
-    "external": 53,
+    "external": 49,
     "initial_access": 9,
-    "mobile": 13,
-    "osint": 38,
+    "mobile": 12,
+    "osint": 33,
     "post": 37,
     "recon": 20,
-    "report": 4,
+    "report": 1,
     "wireless": 12
   },
   "families": {
-    "ad": 12,
-    "api": 17,
+    "ad": 10,
+    "api": 13,
     "auth": 19,
     "binary": 22,
-    "cloud": 24,
+    "cloud": 19,
     "forensics": 15,
-    "identity": 5,
-    "mobile": 13,
+    "identity": 2,
+    "mobile": 12,
     "network": 20,
-    "osint": 38,
-    "report": 4,
+    "osint": 33,
+    "report": 1,
     "se": 9,
     "web": 36,
     "wireless": 12
@@ -726,15 +726,6 @@
       "summary": "CIS K8s"
     },
     {
-      "name": "docker-bench-security",
-      "binary": "docker-bench-security",
-      "family": "cloud",
-      "phase": "cloud",
-      "risk": "passive",
-      "origin": "hexstrike",
-      "summary": "CIS Docker"
-    },
-    {
       "name": "falco",
       "binary": "falco",
       "family": "cloud",
@@ -960,15 +951,6 @@
       "summary": "Azure CLI"
     },
     {
-      "name": "gcloud",
-      "binary": "gcloud",
-      "family": "cloud",
-      "phase": "cloud",
-      "risk": "passive",
-      "origin": "hexstrike",
-      "summary": "GCP CLI"
-    },
-    {
       "name": "anew",
       "binary": "anew",
       "family": "osint",
@@ -1057,24 +1039,6 @@
       "risk": "passive",
       "origin": "hexstrike",
       "summary": "Container CVE"
-    },
-    {
-      "name": "cloudmapper",
-      "binary": "cloudmapper",
-      "family": "cloud",
-      "phase": "cloud",
-      "risk": "passive",
-      "origin": "hexstrike",
-      "summary": "AWS viz"
-    },
-    {
-      "name": "cloudsploit",
-      "binary": "cloudsploit",
-      "family": "cloud",
-      "phase": "cloud",
-      "risk": "passive",
-      "origin": "hexstrike",
-      "summary": "Cloud scan"
     },
     {
       "name": "opa",
@@ -1221,15 +1185,6 @@
       "summary": "CLI HTTP client"
     },
     {
-      "name": "curl-impersonate",
-      "binary": "curl-impersonate",
-      "family": "api",
-      "phase": "external",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Browser-like TLS fingerprint"
-    },
-    {
       "name": "graphw00f",
       "binary": "graphw00f",
       "family": "api",
@@ -1266,24 +1221,6 @@
       "summary": "GraphQL security checks"
     },
     {
-      "name": "restler",
-      "binary": "restler",
-      "family": "api",
-      "phase": "external",
-      "risk": "active",
-      "origin": "ekay",
-      "summary": "Microsoft RESTler API fuzzer"
-    },
-    {
-      "name": "apisprout",
-      "binary": "apisprout",
-      "family": "api",
-      "phase": "external",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Mock OpenAPI server for labs"
-    },
-    {
       "name": "openapi-generator",
       "binary": "openapi-generator",
       "family": "api",
@@ -1291,15 +1228,6 @@
       "risk": "passive",
       "origin": "ekay",
       "summary": "Generate clients from OpenAPI"
-    },
-    {
-      "name": "spectral",
-      "binary": "spectral",
-      "family": "api",
-      "phase": "external",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "OpenAPI lint / governance"
     },
     {
       "name": "wapiti",
@@ -1428,15 +1356,6 @@
       "summary": "Instagram email/phone OSINT"
     },
     {
-      "name": "insto",
-      "binary": "insto",
-      "family": "osint",
-      "phase": "osint",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Modern Instagram OSINT CLI"
-    },
-    {
       "name": "maigret",
       "binary": "maigret",
       "family": "osint",
@@ -1491,15 +1410,6 @@
       "summary": "Username OSINT across sites"
     },
     {
-      "name": "twint",
-      "binary": "twint",
-      "family": "osint",
-      "phase": "osint",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Twitter/X OSINT (legacy)"
-    },
-    {
       "name": "snscrape",
       "binary": "snscrape",
       "family": "osint",
@@ -1518,15 +1428,6 @@
       "summary": "Public document metadata"
     },
     {
-      "name": "exiflooter",
-      "binary": "exiflooter",
-      "family": "osint",
-      "phase": "osint",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "EXIF from public images"
-    },
-    {
       "name": "photon",
       "binary": "photon",
       "family": "osint",
@@ -1543,24 +1444,6 @@
       "risk": "passive",
       "origin": "ekay",
       "summary": "Web recon suite"
-    },
-    {
-      "name": "reconspider",
-      "binary": "reconspider",
-      "family": "osint",
-      "phase": "osint",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Multi-source recon"
-    },
-    {
-      "name": "osrframework",
-      "binary": "osrf",
-      "family": "osint",
-      "phase": "osint",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "OSINT username frameworks"
     },
     {
       "name": "cewl",
@@ -1662,15 +1545,6 @@
       "summary": "Python AD collector"
     },
     {
-      "name": "pingcastle",
-      "binary": "PingCastle.exe",
-      "family": "ad",
-      "phase": "ad",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "AD health assessment"
-    },
-    {
       "name": "kerbrute",
       "binary": "kerbrute",
       "family": "ad",
@@ -1698,33 +1572,6 @@
       "summary": "ROADTools Azure identity"
     },
     {
-      "name": "aadinternals",
-      "binary": "AADInternals",
-      "family": "identity",
-      "phase": "ad",
-      "risk": "active",
-      "origin": "ekay",
-      "summary": "Azure AD assessment module"
-    },
-    {
-      "name": "graphrunner",
-      "binary": "GraphRunner",
-      "family": "identity",
-      "phase": "ad",
-      "risk": "active",
-      "origin": "ekay",
-      "summary": "Microsoft Graph post-auth assessment"
-    },
-    {
-      "name": "mfasweep",
-      "binary": "MFASweep",
-      "family": "identity",
-      "phase": "ad",
-      "risk": "active",
-      "origin": "ekay",
-      "summary": "MFA status enumeration"
-    },
-    {
       "name": "grype",
       "binary": "grype",
       "family": "cloud",
@@ -1732,15 +1579,6 @@
       "risk": "passive",
       "origin": "ekay",
       "summary": "SBOM/CVE scan"
-    },
-    {
-      "name": "steampipe",
-      "binary": "steampipe",
-      "family": "cloud",
-      "phase": "cloud",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Cloud SQL inventory"
     },
     {
       "name": "s3scanner",
@@ -1959,15 +1797,6 @@
       "summary": "Phishing-sim framework (authorized)"
     },
     {
-      "name": "mobsf",
-      "binary": "mobsf",
-      "family": "mobile",
-      "phase": "mobile",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Mobile app SAST/DAST framework"
-    },
-    {
       "name": "frida",
       "binary": "frida",
       "family": "mobile",
@@ -2112,33 +1941,6 @@
       "summary": "Faraday reporting CLI"
     },
     {
-      "name": "sysreptor",
-      "binary": "sysreptor",
-      "family": "report",
-      "phase": "report",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Pentest report platform"
-    },
-    {
-      "name": "pwndoc",
-      "binary": "pwndoc",
-      "family": "report",
-      "phase": "report",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Collaborative pentest reports"
-    },
-    {
-      "name": "defectdojo",
-      "binary": "defectdojo",
-      "family": "report",
-      "phase": "report",
-      "risk": "passive",
-      "origin": "ekay",
-      "summary": "Vulnerability management"
-    },
-    {
       "name": "certipy",
       "binary": "certipy",
       "family": "ad",
@@ -2155,15 +1957,6 @@
       "risk": "active",
       "origin": "ekay",
       "summary": "LDAP domain dump for AD recon"
-    },
-    {
-      "name": "rusthound",
-      "binary": "rusthound",
-      "family": "ad",
-      "phase": "ad",
-      "risk": "active",
-      "origin": "ekay",
-      "summary": "BloodHound collector (Rust)"
     },
     {
       "name": "coercer",

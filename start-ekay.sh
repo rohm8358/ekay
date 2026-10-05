@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 export EKAY_TOOL_BIN="${EKAY_TOOL_BIN:-$PWD/ekay-bin}"
-export PATH="$EKAY_TOOL_BIN:$PATH"
+export PATH="$EKAY_TOOL_BIN:$PWD/ekay-env/bin:${HOME}/go/bin:${HOME}/.local/bin:/usr/local/bin:/usr/sbin:/sbin:$PATH"
 
 if [[ -x "$PWD/ekay-env/bin/ekay-python" ]]; then
   exec "$PWD/ekay-env/bin/ekay-python" ekay_server.py

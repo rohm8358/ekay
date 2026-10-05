@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="docs/TOOLS.md"><strong>Full tool catalog (246)</strong></a> ·
+  <a href="docs/TOOLS.md"><strong>Full tool catalog (223)</strong></a> ·
   <a href="docs/catalog.json">catalog.json</a> ·
   <a href="#quick-start-mcp--cursorclaude">Quick start</a>
 </p>
@@ -27,7 +27,7 @@
 | --- | --- |
 | `ekay_server.py` | HTTP API + TriggerBus agents + findings |
 | `ekay_mcp.py` | MCP stdio bridge for Cursor / Claude |
-| Catalog | 246 named tools (nmap, nuclei, certipy, …) |
+| Catalog | 223 runnable tools (nmap, nuclei, certipy, …) |
 | ScopeGuard | Blocks out-of-scope targets before any binary runs |
 | Evidence | Append-only JSONL for demos / thesis artefacts |
 
@@ -160,9 +160,9 @@ Plus **every catalog tool** as its own MCP tool (`nmap`, `nuclei`, `certipy`, �
 
 | | Count |
 | --- | ---: |
-| **Total** | **246** |
-| HexStrike-origin names | ~130 |
-| EKay-only red-team modules | ~116 |
+| **Total (runnable)** | **223** |
+| Removed uninstallable | 23 (Windows-only / heavy platforms / dead projects) |
+| HexStrike-origin + EKay modules | mixed; see docs/TOOLS.md |
 
 Regenerate docs from source anytime:
 

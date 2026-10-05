@@ -37,8 +37,10 @@ def is_real_tool(path: str | None, _depth: int = 0) -> bool:
         return False
     if blob[:4] == b"\x7fELF":
         return True  # native binary
+    if blob[:2] == b"MZ":
+        return True  # Windows PE present (lab transfer / wine targets)
     if blob[:2] != b"#!":
-        return False  # not a script and not ELF -> garbage/placeholder
+        return False  # not a script and not ELF/PE -> garbage/placeholder
     text = blob.decode("utf-8", "ignore")
     if any(marker in text for marker in _SHIM_MARKERS):
         return False  # explicit ekay placeholder shim

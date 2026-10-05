@@ -435,9 +435,20 @@ def main() -> None:
                 # Shell / demo exports win over .env (needed for GIF capture on alt port).
                 if key and key not in os.environ:
                     os.environ[key] = val
-    path = os.environ.get("PATH", "")
-    if tool_bin not in path.split(":"):
-        os.environ["PATH"] = tool_bin + ":" + path
+    home = os.path.expanduser("~")
+    extras = [
+        tool_bin,
+        os.path.join(home, "go", "bin"),
+        os.path.join(home, ".local", "bin"),
+        "/usr/local/bin",
+        "/usr/sbin",
+        "/sbin",
+    ]
+    path_parts = os.environ.get("PATH", "").split(":")
+    for extra in reversed(extras):
+        if extra and extra not in path_parts:
+            path_parts.insert(0, extra)
+    os.environ["PATH"] = ":".join(path_parts)
 
     app = create_app()
     from waitress import serve

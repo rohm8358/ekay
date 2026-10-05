@@ -20,10 +20,11 @@ def test_phases_cover_catalog_families():
 
 def test_catalog_grew_beyond_hexstrike_baseline():
     # HexStrike-class names + EKay red-team extras
-    assert len(CATALOG) >= 240
+    assert len(CATALOG) >= 200
     names = {t.name for t in CATALOG}
     assert "certipy" in names
     assert "linpeas" in names
+    assert "mobsf" not in names  # removed as uninstallable on this host
 
 
 def test_findings_and_next_actions():

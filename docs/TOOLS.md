@@ -1,7 +1,7 @@
 # EKay Tool Catalog
 
-**Total tools:** 246  
-**HexStrike-origin:** 117 · **EKay-only:** 129
+**Total tools:** 223  
+**HexStrike-origin:** 113 · **EKay-only:** 110
 
 Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 
@@ -9,21 +9,21 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 
 | Phase | Tools | Summary |
 | --- | ---: | --- |
-| `osint` | 38 | Passive / open-source intel on the target org or domain |
+| `osint` | 33 | Passive / open-source intel on the target org or domain |
 | `recon` | 20 | Host/port/service discovery inside engagement scope |
-| `external` | 53 | Web/API attack-surface probing and vuln templates |
+| `external` | 49 | Web/API attack-surface probing and vuln templates |
 | `initial_access` | 9 | Authorized foothold simulation (gated) |
 | `creds` | 19 | Credential access / spray / offline crack (gated) |
-| `ad` | 17 | Active Directory enumeration and path analysis (gated) |
-| `cloud` | 24 | Cloud posture and identity assessment |
+| `ad` | 12 | Active Directory enumeration and path analysis (gated) |
+| `cloud` | 19 | Cloud posture and identity assessment |
 | `post` | 37 | Post-exploitation / host triage (gated) |
-| `report` | 4 | Evidence packaging and report export |
-| `mobile` | 13 | Mobile app / device assessment (owned devices) |
+| `report` | 1 | Evidence packaging and report export |
+| `mobile` | 12 | Mobile app / device assessment (owned devices) |
 | `wireless` | 12 | RF / Wi-Fi assessment (requires RF authorization) |
 
 ## Tools by kill-chain phase
 
-### `osint` (38)
+### `osint` (33)
 
 | Tool | Binary | Family | Risk | Origin | Summary |
 | --- | --- | --- | --- | --- | --- |
@@ -33,7 +33,6 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `blackbird` | `blackbird` | osint | passive | ekay | Username OSINT across sites |
 | `dnsenum` | `dnsenum` | osint | active | hexstrike | DNS enumeration |
 | `dnsx` | `dnsx` | osint | passive | ekay | DNS toolkit |
-| `exiflooter` | `exiflooter` | osint | passive | ekay | EXIF from public images |
 | `fierce` | `fierce` | osint | active | hexstrike | DNS recon |
 | `finalrecon` | `finalrecon` | osint | passive | ekay | Web recon suite |
 | `gau` | `gau` | osint | passive | hexstrike | GetAllUrls |
@@ -41,17 +40,14 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `gitleaks` | `gitleaks` | osint | passive | ekay | Repo secret scan |
 | `holehe` | `holehe` | osint | passive | ekay | Email registration OSINT |
 | `instaloader` | `instaloader` | osint | passive | ekay | Instagram public media/metadata |
-| `insto` | `insto` | osint | passive | ekay | Modern Instagram OSINT CLI |
 | `maigret` | `maigret` | osint | passive | ekay | Username search across sites |
 | `maltego` | `maltego` | osint | passive | hexstrike | Link analysis |
 | `metagoofil` | `metagoofil` | osint | passive | ekay | Public document metadata |
 | `osintgram` | `osintgram` | osint | passive | ekay | Instagram public OSINT shell |
-| `osrframework` | `osrf` | osint | passive | ekay | OSINT username frameworks |
 | `paramspider` | `paramspider` | osint | passive | hexstrike | Archive parameter mine |
 | `phoneinfoga` | `phoneinfoga` | osint | passive | ekay | Phone number OSINT |
 | `photon` | `photon` | osint | passive | ekay | Fast web crawler OSINT |
 | `recon-ng` | `recon-ng` | osint | passive | hexstrike | Recon framework |
-| `reconspider` | `reconspider` | osint | passive | ekay | Multi-source recon |
 | `sherlock` | `sherlock` | osint | passive | hexstrike | Username OSINT |
 | `snscrape` | `snscrape` | osint | passive | ekay | Social scrape without API keys |
 | `social-analyzer` | `social-analyzer` | osint | passive | hexstrike | Social OSINT |
@@ -62,7 +58,6 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `theharvester` | `theHarvester` | osint | passive | hexstrike | Email/host OSINT |
 | `toutatis` | `toutatis` | osint | passive | ekay | Instagram email/phone OSINT |
 | `trufflehog` | `trufflehog` | osint | passive | hexstrike | Secret scan |
-| `twint` | `twint` | osint | passive | ekay | Twitter/X OSINT (legacy) |
 | `uro` | `uro` | osint | passive | hexstrike | URL dedupe |
 | `waybackurls` | `waybackurls` | osint | passive | hexstrike | Wayback URLs |
 
@@ -91,16 +86,14 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `smbmap` | `smbmap` | network | active | hexstrike | SMB share map |
 | `socat` | `socat` | network | restricted | ekay | Relay / port forward |
 
-### `external` (53)
+### `external` (49)
 
 | Tool | Binary | Family | Risk | Origin | Summary |
 | --- | --- | --- | --- | --- | --- |
-| `apisprout` | `apisprout` | api | passive | ekay | Mock OpenAPI server for labs |
 | `arjun` | `arjun` | web | active | hexstrike | Parameter discovery |
 | `cariddi` | `cariddi` | web | active | ekay | Crawl + secret / endpoint hunt |
 | `clairvoyance` | `clairvoyance` | api | active | ekay | GraphQL schema recovery |
 | `commix` | `commix` | web | intrusive | hexstrike | Command-injection tester |
-| `curl-impersonate` | `curl-impersonate` | api | passive | ekay | Browser-like TLS fingerprint |
 | `dalfox` | `dalfox` | web | active | hexstrike | XSS scanner |
 | `dirb` | `dirb` | web | active | hexstrike | Classic dir brute |
 | `dirsearch` | `dirsearch` | web | active | hexstrike | Directory search |
@@ -131,9 +124,7 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `openapi-generator` | `openapi-generator` | api | passive | ekay | Generate clients from OpenAPI |
 | `postman` | `postman` | api | passive | ekay | API collections / role tokens |
 | `qsreplace` | `qsreplace` | web | passive | hexstrike | Query string replace |
-| `restler` | `restler` | api | active | ekay | Microsoft RESTler API fuzzer |
 | `schemathesis` | `schemathesis` | api | active | ekay | OpenAPI property fuzzing |
-| `spectral` | `spectral` | api | passive | ekay | OpenAPI lint / governance |
 | `sqlmap` | `sqlmap` | web | intrusive | hexstrike | SQLi tester (authorized only) |
 | `sslscan` | `sslscan` | web | passive | hexstrike | Cipher enum |
 | `sslyze` | `sslyze` | web | passive | hexstrike | TLS analyzer |
@@ -187,29 +178,24 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `sprayhound` | `sprayhound` | auth | intrusive | ekay | AD spray with lockout awareness |
 | `username-anarchy` | `username-anarchy` | auth | passive | ekay | Username mutation |
 
-### `ad` (17)
+### `ad` (12)
 
 | Tool | Binary | Family | Risk | Origin | Summary |
 | --- | --- | --- | --- | --- | --- |
-| `aadinternals` | `AADInternals` | identity | active | ekay | Azure AD assessment module |
 | `bloodhound` | `bloodhound` | ad | passive | ekay | AD path analysis UI |
 | `bloodhound-python` | `bloodhound-python` | ad | active | ekay | Python AD collector |
 | `certipy` | `certipy` | ad | active | ekay | AD CS enumeration / abuse paths (authorized) |
 | `coercer` | `coercer` | ad | intrusive | ekay | Auth coerce tester (lab / authorized) |
-| `graphrunner` | `GraphRunner` | identity | active | ekay | Microsoft Graph post-auth assessment |
 | `kerbrute` | `kerbrute` | ad | active | ekay | Kerberos user enum |
 | `ldapdomaindump` | `ldapdomaindump` | ad | active | ekay | LDAP domain dump for AD recon |
 | `ldapsearch` | `ldapsearch` | ad | active | ekay | OpenLDAP query client |
-| `mfasweep` | `MFASweep` | identity | active | ekay | MFA status enumeration |
 | `mitm6` | `mitm6` | ad | restricted | ekay | IPv6 DNS takeover lab helper |
 | `ntlmrelayx` | `ntlmrelayx.py` | ad | restricted | ekay | Impacket NTLM relay (lab) |
 | `o365spray` | `o365spray` | identity | intrusive | ekay | O365 enum/spray (policy gated) |
-| `pingcastle` | `PingCastle.exe` | ad | passive | ekay | AD health assessment |
 | `pretender` | `pretender` | ad | intrusive | ekay | mDNS/DNS spoof helper (lab) |
 | `roadtx` | `roadtx` | identity | active | ekay | ROADTools Azure identity |
-| `rusthound` | `rusthound` | ad | active | ekay | BloodHound collector (Rust) |
 
-### `cloud` (24)
+### `cloud` (19)
 
 | Tool | Binary | Family | Risk | Origin | Summary |
 | --- | --- | --- | --- | --- | --- |
@@ -218,12 +204,8 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `checkov` | `checkov` | cloud | passive | hexstrike | IaC scanning |
 | `clair` | `clair` | cloud | passive | hexstrike | Container CVE |
 | `cloudbrute` | `cloudbrute` | cloud | passive | ekay | Cloud enum across providers |
-| `cloudmapper` | `cloudmapper` | cloud | passive | hexstrike | AWS viz |
-| `cloudsploit` | `cloudsploit` | cloud | passive | hexstrike | Cloud scan |
-| `docker-bench-security` | `docker-bench-security` | cloud | passive | hexstrike | CIS Docker |
 | `enumerate-iam` | `enumerate-iam` | cloud | active | ekay | AWS IAM permission enum |
 | `falco` | `falco` | cloud | passive | hexstrike | Runtime detection |
-| `gcloud` | `gcloud` | cloud | passive | hexstrike | GCP CLI |
 | `grype` | `grype` | cloud | passive | ekay | SBOM/CVE scan |
 | `helm` | `helm` | cloud | passive | hexstrike | Helm CLI |
 | `kube-bench` | `kube-bench` | cloud | passive | hexstrike | CIS K8s |
@@ -234,7 +216,6 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `prowler` | `prowler` | cloud | passive | hexstrike | Cloud posture |
 | `s3scanner` | `s3scanner` | cloud | passive | ekay | S3 bucket discovery |
 | `scout-suite` | `scout` | cloud | passive | hexstrike | Multi-cloud audit |
-| `steampipe` | `steampipe` | cloud | passive | ekay | Cloud SQL inventory |
 | `terrascan` | `terrascan` | cloud | passive | hexstrike | IaC policy |
 | `trivy` | `trivy` | cloud | passive | hexstrike | Container/IaC vulns |
 
@@ -280,16 +261,13 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `yara` | `yara` | forensics | passive | ekay | Pattern matching |
 | `zsteg` | `zsteg` | forensics | passive | hexstrike | PNG/BMP stego |
 
-### `report` (4)
+### `report` (1)
 
 | Tool | Binary | Family | Risk | Origin | Summary |
 | --- | --- | --- | --- | --- | --- |
-| `defectdojo` | `defectdojo` | report | passive | ekay | Vulnerability management |
 | `faraday-cli` | `faraday-cli` | report | passive | ekay | Faraday reporting CLI |
-| `pwndoc` | `pwndoc` | report | passive | ekay | Collaborative pentest reports |
-| `sysreptor` | `sysreptor` | report | passive | ekay | Pentest report platform |
 
-### `mobile` (13)
+### `mobile` (12)
 
 | Tool | Binary | Family | Risk | Origin | Summary |
 | --- | --- | --- | --- | --- | --- |
@@ -301,7 +279,6 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 | `frida-ps` | `frida-ps` | mobile | passive | ekay | List processes on USB device |
 | `jadx` | `jadx` | mobile | passive | ekay | APK to Java decompiler |
 | `jadx-gui` | `jadx-gui` | mobile | passive | ekay | JADX graphical UI |
-| `mobsf` | `mobsf` | mobile | passive | ekay | Mobile app SAST/DAST framework |
 | `mvt-android` | `mvt-android` | mobile | passive | ekay | Mobile Verification Toolkit Android |
 | `mvt-ios` | `mvt-ios` | mobile | passive | ekay | Mobile Verification Toolkit iOS |
 | `objection` | `objection` | mobile | active | ekay | Frida mobile exploration toolkit |
@@ -328,17 +305,17 @@ Generated from `ekay/catalog.py` via `scripts/export_catalog.py`.
 
 | Family | Count |
 | --- | ---: |
-| `ad` | 12 |
-| `api` | 17 |
+| `ad` | 10 |
+| `api` | 13 |
 | `auth` | 19 |
 | `binary` | 22 |
-| `cloud` | 24 |
+| `cloud` | 19 |
 | `forensics` | 15 |
-| `identity` | 5 |
-| `mobile` | 13 |
+| `identity` | 2 |
+| `mobile` | 12 |
 | `network` | 20 |
-| `osint` | 38 |
-| `report` | 4 |
+| `osint` | 33 |
+| `report` | 1 |
 | `se` | 9 |
 | `web` | 36 |
 | `wireless` | 12 |
