@@ -1,0 +1,2250 @@
+{
+  "name": "ekay",
+  "version": "2.0.0",
+  "total": 246,
+  "phases": {
+    "ad": 17,
+    "cloud": 24,
+    "creds": 19,
+    "external": 53,
+    "initial_access": 9,
+    "mobile": 13,
+    "osint": 38,
+    "post": 37,
+    "recon": 20,
+    "report": 4,
+    "wireless": 12
+  },
+  "families": {
+    "ad": 12,
+    "api": 17,
+    "auth": 19,
+    "binary": 22,
+    "cloud": 24,
+    "forensics": 15,
+    "identity": 5,
+    "mobile": 13,
+    "network": 20,
+    "osint": 38,
+    "report": 4,
+    "se": 9,
+    "web": 36,
+    "wireless": 12
+  },
+  "tools": [
+    {
+      "name": "nmap",
+      "binary": "nmap",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Port/service scan"
+    },
+    {
+      "name": "rustscan",
+      "binary": "rustscan",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Fast port scan"
+    },
+    {
+      "name": "masscan",
+      "binary": "masscan",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "High-rate port scan"
+    },
+    {
+      "name": "autorecon",
+      "binary": "autorecon",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Automated recon wrapper"
+    },
+    {
+      "name": "amass",
+      "binary": "amass",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Subdomain enum"
+    },
+    {
+      "name": "subfinder",
+      "binary": "subfinder",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Passive subdomains"
+    },
+    {
+      "name": "fierce",
+      "binary": "fierce",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "DNS recon"
+    },
+    {
+      "name": "dnsenum",
+      "binary": "dnsenum",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "DNS enumeration"
+    },
+    {
+      "name": "theharvester",
+      "binary": "theHarvester",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Email/host OSINT"
+    },
+    {
+      "name": "arp-scan",
+      "binary": "arp-scan",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "LAN ARP discovery"
+    },
+    {
+      "name": "nbtscan",
+      "binary": "nbtscan",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "NetBIOS scan"
+    },
+    {
+      "name": "rpcclient",
+      "binary": "rpcclient",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "MSRPC enum"
+    },
+    {
+      "name": "enum4linux",
+      "binary": "enum4linux",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "SMB enum"
+    },
+    {
+      "name": "enum4linux-ng",
+      "binary": "enum4linux-ng",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "SMB enum (ng)"
+    },
+    {
+      "name": "smbmap",
+      "binary": "smbmap",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "SMB share map"
+    },
+    {
+      "name": "responder",
+      "binary": "responder",
+      "family": "network",
+      "phase": "recon",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "Name-resolution poisoner (lab only)"
+    },
+    {
+      "name": "netexec",
+      "binary": "nxc",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "NetExec"
+    },
+    {
+      "name": "gobuster",
+      "binary": "gobuster",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Dir/vhost brute"
+    },
+    {
+      "name": "feroxbuster",
+      "binary": "feroxbuster",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Recursive content discovery"
+    },
+    {
+      "name": "dirsearch",
+      "binary": "dirsearch",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Directory search"
+    },
+    {
+      "name": "ffuf",
+      "binary": "ffuf",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Web fuzzer"
+    },
+    {
+      "name": "dirb",
+      "binary": "dirb",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Classic dir brute"
+    },
+    {
+      "name": "httpx",
+      "binary": "httpx",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "HTTP probe"
+    },
+    {
+      "name": "katana",
+      "binary": "katana",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Crawler"
+    },
+    {
+      "name": "hakrawler",
+      "binary": "hakrawler",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Endpoint crawl"
+    },
+    {
+      "name": "gau",
+      "binary": "gau",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "GetAllUrls"
+    },
+    {
+      "name": "waybackurls",
+      "binary": "waybackurls",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Wayback URLs"
+    },
+    {
+      "name": "nuclei",
+      "binary": "nuclei",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Template vuln scan"
+    },
+    {
+      "name": "nikto",
+      "binary": "nikto",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Web server checks"
+    },
+    {
+      "name": "sqlmap",
+      "binary": "sqlmap",
+      "family": "web",
+      "phase": "external",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "SQLi tester (authorized only)"
+    },
+    {
+      "name": "wpscan",
+      "binary": "wpscan",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "WordPress scan"
+    },
+    {
+      "name": "arjun",
+      "binary": "arjun",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Parameter discovery"
+    },
+    {
+      "name": "paramspider",
+      "binary": "paramspider",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Archive parameter mine"
+    },
+    {
+      "name": "dalfox",
+      "binary": "dalfox",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "XSS scanner"
+    },
+    {
+      "name": "wafw00f",
+      "binary": "wafw00f",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "WAF fingerprint"
+    },
+    {
+      "name": "jaeles",
+      "binary": "jaeles",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Signature scanner"
+    },
+    {
+      "name": "testssl",
+      "binary": "testssl.sh",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "TLS assessment"
+    },
+    {
+      "name": "sslscan",
+      "binary": "sslscan",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Cipher enum"
+    },
+    {
+      "name": "sslyze",
+      "binary": "sslyze",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "TLS analyzer"
+    },
+    {
+      "name": "whatweb",
+      "binary": "whatweb",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Tech fingerprint"
+    },
+    {
+      "name": "jwt-tool",
+      "binary": "jwt_tool",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "JWT tester"
+    },
+    {
+      "name": "wfuzz",
+      "binary": "wfuzz",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Web fuzzer"
+    },
+    {
+      "name": "commix",
+      "binary": "commix",
+      "family": "web",
+      "phase": "external",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "Command-injection tester"
+    },
+    {
+      "name": "nosqlmap",
+      "binary": "nosqlmap",
+      "family": "web",
+      "phase": "external",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "NoSQL injection tester"
+    },
+    {
+      "name": "tplmap",
+      "binary": "tplmap",
+      "family": "web",
+      "phase": "external",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "SSTI tester"
+    },
+    {
+      "name": "x8",
+      "binary": "x8",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Hidden parameter discovery"
+    },
+    {
+      "name": "hydra",
+      "binary": "hydra",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "Online login tester (lockout-aware policy)"
+    },
+    {
+      "name": "john",
+      "binary": "john",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "Offline hash cracking"
+    },
+    {
+      "name": "hashcat",
+      "binary": "hashcat",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "GPU hash cracking"
+    },
+    {
+      "name": "medusa",
+      "binary": "medusa",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "Parallel login tester"
+    },
+    {
+      "name": "patator",
+      "binary": "patator",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "Modular brute helper"
+    },
+    {
+      "name": "crackmapexec",
+      "binary": "crackmapexec",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "CME (legacy name)"
+    },
+    {
+      "name": "evil-winrm",
+      "binary": "evil-winrm",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "WinRM shell (lab)"
+    },
+    {
+      "name": "hash-identifier",
+      "binary": "hash-identifier",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Hash ID"
+    },
+    {
+      "name": "hashid",
+      "binary": "hashid",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Hash algorithm ID"
+    },
+    {
+      "name": "ophcrack",
+      "binary": "ophcrack",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "intrusive",
+      "origin": "hexstrike",
+      "summary": "Rainbow tables"
+    },
+    {
+      "name": "gdb",
+      "binary": "gdb",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Debugger"
+    },
+    {
+      "name": "radare2",
+      "binary": "r2",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "RE framework"
+    },
+    {
+      "name": "ghidra",
+      "binary": "ghidra",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "NSA SRE suite"
+    },
+    {
+      "name": "binwalk",
+      "binary": "binwalk",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Firmware carve"
+    },
+    {
+      "name": "checksec",
+      "binary": "checksec",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Binary mitigations"
+    },
+    {
+      "name": "ropgadget",
+      "binary": "ROPgadget",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "ROP gadget search"
+    },
+    {
+      "name": "ropper",
+      "binary": "ropper",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "ROP helper"
+    },
+    {
+      "name": "one-gadget",
+      "binary": "one_gadget",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "libc one-shot gadgets"
+    },
+    {
+      "name": "pwntools",
+      "binary": "python3",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Exploit-dev library (import only)"
+    },
+    {
+      "name": "angr",
+      "binary": "python3",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Symbolic execution"
+    },
+    {
+      "name": "msfvenom",
+      "binary": "msfvenom",
+      "family": "binary",
+      "phase": "post",
+      "risk": "restricted",
+      "origin": "hexstrike",
+      "summary": "Payload generator (lab)"
+    },
+    {
+      "name": "volatility3",
+      "binary": "vol",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Memory forensics"
+    },
+    {
+      "name": "foremost",
+      "binary": "foremost",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "File carving"
+    },
+    {
+      "name": "steghide",
+      "binary": "steghide",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Stego extract"
+    },
+    {
+      "name": "exiftool",
+      "binary": "exiftool",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Metadata"
+    },
+    {
+      "name": "autopsy",
+      "binary": "autopsy",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Forensics UI"
+    },
+    {
+      "name": "prowler",
+      "binary": "prowler",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Cloud posture"
+    },
+    {
+      "name": "scout-suite",
+      "binary": "scout",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Multi-cloud audit"
+    },
+    {
+      "name": "trivy",
+      "binary": "trivy",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Container/IaC vulns"
+    },
+    {
+      "name": "kube-hunter",
+      "binary": "kube-hunter",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "K8s pentest"
+    },
+    {
+      "name": "kube-bench",
+      "binary": "kube-bench",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "CIS K8s"
+    },
+    {
+      "name": "docker-bench-security",
+      "binary": "docker-bench-security",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "CIS Docker"
+    },
+    {
+      "name": "falco",
+      "binary": "falco",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Runtime detection"
+    },
+    {
+      "name": "checkov",
+      "binary": "checkov",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "IaC scanning"
+    },
+    {
+      "name": "terrascan",
+      "binary": "terrascan",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "IaC policy"
+    },
+    {
+      "name": "pacu",
+      "binary": "pacu",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "AWS assessment framework"
+    },
+    {
+      "name": "sherlock",
+      "binary": "sherlock",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Username OSINT"
+    },
+    {
+      "name": "social-analyzer",
+      "binary": "social-analyzer",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Social OSINT"
+    },
+    {
+      "name": "recon-ng",
+      "binary": "recon-ng",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Recon framework"
+    },
+    {
+      "name": "maltego",
+      "binary": "maltego",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Link analysis"
+    },
+    {
+      "name": "spiderfoot",
+      "binary": "spiderfoot",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "OSINT automation"
+    },
+    {
+      "name": "trufflehog",
+      "binary": "trufflehog",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Secret scan"
+    },
+    {
+      "name": "subjack",
+      "binary": "subjack",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "Takeover check"
+    },
+    {
+      "name": "aquatone",
+      "binary": "aquatone",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Visual recon"
+    },
+    {
+      "name": "zap",
+      "binary": "zap.sh",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "hexstrike",
+      "summary": "OWASP ZAP CLI"
+    },
+    {
+      "name": "strings",
+      "binary": "strings",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Extract strings"
+    },
+    {
+      "name": "objdump",
+      "binary": "objdump",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Disassemble"
+    },
+    {
+      "name": "readelf",
+      "binary": "readelf",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "ELF headers"
+    },
+    {
+      "name": "upx",
+      "binary": "upx",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Packer"
+    },
+    {
+      "name": "photorec",
+      "binary": "photorec",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "File recovery"
+    },
+    {
+      "name": "testdisk",
+      "binary": "testdisk",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Partition recovery"
+    },
+    {
+      "name": "stegsolve",
+      "binary": "stegsolve",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Stego visual"
+    },
+    {
+      "name": "bulk-extractor",
+      "binary": "bulk_extractor",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Feature extract"
+    },
+    {
+      "name": "kubectl",
+      "binary": "kubectl",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "K8s CLI"
+    },
+    {
+      "name": "helm",
+      "binary": "helm",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Helm CLI"
+    },
+    {
+      "name": "aws",
+      "binary": "aws",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "AWS CLI"
+    },
+    {
+      "name": "az",
+      "binary": "az",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Azure CLI"
+    },
+    {
+      "name": "gcloud",
+      "binary": "gcloud",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "GCP CLI"
+    },
+    {
+      "name": "anew",
+      "binary": "anew",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Append unique lines"
+    },
+    {
+      "name": "qsreplace",
+      "binary": "qsreplace",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Query string replace"
+    },
+    {
+      "name": "uro",
+      "binary": "uro",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "URL dedupe"
+    },
+    {
+      "name": "xxd",
+      "binary": "xxd",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Hex dump"
+    },
+    {
+      "name": "hexdump",
+      "binary": "hexdump",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Hex viewer"
+    },
+    {
+      "name": "pwninit",
+      "binary": "pwninit",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Pwn setup"
+    },
+    {
+      "name": "zsteg",
+      "binary": "zsteg",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "PNG/BMP stego"
+    },
+    {
+      "name": "outguess",
+      "binary": "outguess",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "JPEG stego"
+    },
+    {
+      "name": "scalpel",
+      "binary": "scalpel",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Carver"
+    },
+    {
+      "name": "clair",
+      "binary": "clair",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Container CVE"
+    },
+    {
+      "name": "cloudmapper",
+      "binary": "cloudmapper",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "AWS viz"
+    },
+    {
+      "name": "cloudsploit",
+      "binary": "cloudsploit",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Cloud scan"
+    },
+    {
+      "name": "opa",
+      "binary": "opa",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "hexstrike",
+      "summary": "Policy engine"
+    },
+    {
+      "name": "naabu",
+      "binary": "naabu",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "ProjectDiscovery port scan"
+    },
+    {
+      "name": "bettercap",
+      "binary": "bettercap",
+      "family": "network",
+      "phase": "recon",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "Network attack framework (lab)"
+    },
+    {
+      "name": "ligolo-ng",
+      "binary": "ligolo-ng",
+      "family": "network",
+      "phase": "recon",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Pivoting proxy (engagement)"
+    },
+    {
+      "name": "chisel",
+      "binary": "chisel",
+      "family": "network",
+      "phase": "recon",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Tunnel helper (engagement)"
+    },
+    {
+      "name": "proxychains",
+      "binary": "proxychains4",
+      "family": "network",
+      "phase": "recon",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Proxy chain wrapper"
+    },
+    {
+      "name": "socat",
+      "binary": "socat",
+      "family": "network",
+      "phase": "recon",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Relay / port forward"
+    },
+    {
+      "name": "nmap-nse-vuln",
+      "binary": "nmap",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Nmap vuln NSE scripts"
+    },
+    {
+      "name": "rustscan-ultrarange",
+      "binary": "rustscan",
+      "family": "network",
+      "phase": "recon",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Full-port rustscan wrapper"
+    },
+    {
+      "name": "kiterunner",
+      "binary": "kr",
+      "family": "api",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "API-aware route brute"
+    },
+    {
+      "name": "schemathesis",
+      "binary": "schemathesis",
+      "family": "api",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "OpenAPI property fuzzing"
+    },
+    {
+      "name": "mitmproxy",
+      "binary": "mitmproxy",
+      "family": "api",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Scriptable HTTP/HTTPS proxy"
+    },
+    {
+      "name": "mitmdump",
+      "binary": "mitmdump",
+      "family": "api",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "mitmproxy headless dump"
+    },
+    {
+      "name": "postman",
+      "binary": "postman",
+      "family": "api",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "API collections / role tokens"
+    },
+    {
+      "name": "insomnia",
+      "binary": "insomnia",
+      "family": "api",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "API client for authz suites"
+    },
+    {
+      "name": "httpie",
+      "binary": "http",
+      "family": "api",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "CLI HTTP client"
+    },
+    {
+      "name": "curl-impersonate",
+      "binary": "curl-impersonate",
+      "family": "api",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Browser-like TLS fingerprint"
+    },
+    {
+      "name": "graphw00f",
+      "binary": "graphw00f",
+      "family": "api",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "GraphQL engine fingerprint"
+    },
+    {
+      "name": "clairvoyance",
+      "binary": "clairvoyance",
+      "family": "api",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "GraphQL schema recovery"
+    },
+    {
+      "name": "inql",
+      "binary": "inql",
+      "family": "api",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "GraphQL introspection helper"
+    },
+    {
+      "name": "graphql-cop",
+      "binary": "graphql-cop",
+      "family": "api",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "GraphQL security checks"
+    },
+    {
+      "name": "restler",
+      "binary": "restler",
+      "family": "api",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Microsoft RESTler API fuzzer"
+    },
+    {
+      "name": "apisprout",
+      "binary": "apisprout",
+      "family": "api",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Mock OpenAPI server for labs"
+    },
+    {
+      "name": "openapi-generator",
+      "binary": "openapi-generator",
+      "family": "api",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Generate clients from OpenAPI"
+    },
+    {
+      "name": "spectral",
+      "binary": "spectral",
+      "family": "api",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "OpenAPI lint / governance"
+    },
+    {
+      "name": "wapiti",
+      "binary": "wapiti",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Web vuln scanner"
+    },
+    {
+      "name": "graphqlmap",
+      "binary": "graphqlmap",
+      "family": "api",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "GraphQL interactive tester"
+    },
+    {
+      "name": "hakrawler-deep",
+      "binary": "hakrawler",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Deep crawl profile"
+    },
+    {
+      "name": "gau-plus",
+      "binary": "gau",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "GetAllUrls multi-source"
+    },
+    {
+      "name": "waymore",
+      "binary": "waymore",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Wayback + CommonCrawl URLs"
+    },
+    {
+      "name": "urlfinder",
+      "binary": "urlfinder",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "URL discovery helper"
+    },
+    {
+      "name": "cariddi",
+      "binary": "cariddi",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Crawl + secret / endpoint hunt"
+    },
+    {
+      "name": "interactsh-client",
+      "binary": "interactsh-client",
+      "family": "web",
+      "phase": "external",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "OOB interaction client"
+    },
+    {
+      "name": "notify",
+      "binary": "notify",
+      "family": "web",
+      "phase": "external",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Alert pipe for findings"
+    },
+    {
+      "name": "dnsx",
+      "binary": "dnsx",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "DNS toolkit"
+    },
+    {
+      "name": "gitleaks",
+      "binary": "gitleaks",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Repo secret scan"
+    },
+    {
+      "name": "osintgram",
+      "binary": "osintgram",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Instagram public OSINT shell"
+    },
+    {
+      "name": "instaloader",
+      "binary": "instaloader",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Instagram public media/metadata"
+    },
+    {
+      "name": "toutatis",
+      "binary": "toutatis",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Instagram email/phone OSINT"
+    },
+    {
+      "name": "insto",
+      "binary": "insto",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Modern Instagram OSINT CLI"
+    },
+    {
+      "name": "maigret",
+      "binary": "maigret",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Username search across sites"
+    },
+    {
+      "name": "socialscan",
+      "binary": "socialscan",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Username/email availability"
+    },
+    {
+      "name": "holehe",
+      "binary": "holehe",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Email registration OSINT"
+    },
+    {
+      "name": "ghunt",
+      "binary": "ghunt",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Google account OSINT"
+    },
+    {
+      "name": "phoneinfoga",
+      "binary": "phoneinfoga",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Phone number OSINT"
+    },
+    {
+      "name": "blackbird",
+      "binary": "blackbird",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Username OSINT across sites"
+    },
+    {
+      "name": "twint",
+      "binary": "twint",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Twitter/X OSINT (legacy)"
+    },
+    {
+      "name": "snscrape",
+      "binary": "snscrape",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Social scrape without API keys"
+    },
+    {
+      "name": "metagoofil",
+      "binary": "metagoofil",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Public document metadata"
+    },
+    {
+      "name": "exiflooter",
+      "binary": "exiflooter",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "EXIF from public images"
+    },
+    {
+      "name": "photon",
+      "binary": "photon",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Fast web crawler OSINT"
+    },
+    {
+      "name": "finalrecon",
+      "binary": "finalrecon",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Web recon suite"
+    },
+    {
+      "name": "reconspider",
+      "binary": "reconspider",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Multi-source recon"
+    },
+    {
+      "name": "osrframework",
+      "binary": "osrf",
+      "family": "osint",
+      "phase": "osint",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "OSINT username frameworks"
+    },
+    {
+      "name": "cewl",
+      "binary": "cewl",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Target-specific wordlist"
+    },
+    {
+      "name": "crunch",
+      "binary": "crunch",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Wordlist generator"
+    },
+    {
+      "name": "cupp",
+      "binary": "cupp",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Common User Password Profiler"
+    },
+    {
+      "name": "username-anarchy",
+      "binary": "username-anarchy",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Username mutation"
+    },
+    {
+      "name": "impacket-secretsdump",
+      "binary": "secretsdump.py",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Impacket DC/host dump (lab)"
+    },
+    {
+      "name": "impacket-getnpusers",
+      "binary": "GetNPUsers.py",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "AS-REP roast (authorized AD)"
+    },
+    {
+      "name": "impacket-smbclient",
+      "binary": "smbclient.py",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Impacket SMB client"
+    },
+    {
+      "name": "impacket-psexec",
+      "binary": "psexec.py",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Impacket PsExec (lab)"
+    },
+    {
+      "name": "sprayhound",
+      "binary": "sprayhound",
+      "family": "auth",
+      "phase": "creds",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "AD spray with lockout awareness"
+    },
+    {
+      "name": "bloodhound",
+      "binary": "bloodhound",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "AD path analysis UI"
+    },
+    {
+      "name": "bloodhound-python",
+      "binary": "bloodhound-python",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Python AD collector"
+    },
+    {
+      "name": "pingcastle",
+      "binary": "PingCastle.exe",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "AD health assessment"
+    },
+    {
+      "name": "kerbrute",
+      "binary": "kerbrute",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Kerberos user enum"
+    },
+    {
+      "name": "o365spray",
+      "binary": "o365spray",
+      "family": "identity",
+      "phase": "ad",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "O365 enum/spray (policy gated)"
+    },
+    {
+      "name": "roadtx",
+      "binary": "roadtx",
+      "family": "identity",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "ROADTools Azure identity"
+    },
+    {
+      "name": "aadinternals",
+      "binary": "AADInternals",
+      "family": "identity",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Azure AD assessment module"
+    },
+    {
+      "name": "graphrunner",
+      "binary": "GraphRunner",
+      "family": "identity",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Microsoft Graph post-auth assessment"
+    },
+    {
+      "name": "mfasweep",
+      "binary": "MFASweep",
+      "family": "identity",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "MFA status enumeration"
+    },
+    {
+      "name": "grype",
+      "binary": "grype",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "SBOM/CVE scan"
+    },
+    {
+      "name": "steampipe",
+      "binary": "steampipe",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Cloud SQL inventory"
+    },
+    {
+      "name": "s3scanner",
+      "binary": "s3scanner",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "S3 bucket discovery"
+    },
+    {
+      "name": "cloudbrute",
+      "binary": "cloudbrute",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Cloud enum across providers"
+    },
+    {
+      "name": "enumerate-iam",
+      "binary": "enumerate-iam",
+      "family": "cloud",
+      "phase": "cloud",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "AWS IAM permission enum"
+    },
+    {
+      "name": "aircrack-ng",
+      "binary": "aircrack-ng",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "Wi-Fi crypto (RF permission)"
+    },
+    {
+      "name": "airmon-ng",
+      "binary": "airmon-ng",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "Monitor-mode helper"
+    },
+    {
+      "name": "airodump-ng",
+      "binary": "airodump-ng",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "Wi-Fi traffic capture"
+    },
+    {
+      "name": "aireplay-ng",
+      "binary": "aireplay-ng",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "Wi-Fi injection (authorized)"
+    },
+    {
+      "name": "wifite",
+      "binary": "wifite",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "Automated Wi-Fi audit"
+    },
+    {
+      "name": "kismet",
+      "binary": "kismet",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Wireless IDS/sniffer"
+    },
+    {
+      "name": "hcxdumptool",
+      "binary": "hcxdumptool",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "PMKID/handshake capture"
+    },
+    {
+      "name": "hcxpcapngtool",
+      "binary": "hcxpcapngtool",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Convert captures for hashcat"
+    },
+    {
+      "name": "reaver",
+      "binary": "reaver",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "WPS audit (authorized RF)"
+    },
+    {
+      "name": "bully",
+      "binary": "bully",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "WPS PIN audit"
+    },
+    {
+      "name": "fern-wifi-cracker",
+      "binary": "fern-wifi-cracker",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "GUI Wi-Fi audit suite"
+    },
+    {
+      "name": "wifiphisher",
+      "binary": "wifiphisher",
+      "family": "wireless",
+      "phase": "wireless",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Authorized evil-twin awareness lab"
+    },
+    {
+      "name": "gophish",
+      "binary": "gophish",
+      "family": "se",
+      "phase": "initial_access",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Phishing simulation platform"
+    },
+    {
+      "name": "king-phisher",
+      "binary": "king-phisher",
+      "family": "se",
+      "phase": "initial_access",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Phishing campaign server"
+    },
+    {
+      "name": "setoolkit",
+      "binary": "setoolkit",
+      "family": "se",
+      "phase": "initial_access",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Social-Engineer Toolkit"
+    },
+    {
+      "name": "evilginx2",
+      "binary": "evilginx",
+      "family": "se",
+      "phase": "initial_access",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "MFA phishing-sim reverse proxy (lab)"
+    },
+    {
+      "name": "modlishka",
+      "binary": "modlishka",
+      "family": "se",
+      "phase": "initial_access",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Reverse-proxy phishing sim"
+    },
+    {
+      "name": "swaks",
+      "binary": "swaks",
+      "family": "se",
+      "phase": "initial_access",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "SMTP test / mail path check"
+    },
+    {
+      "name": "hiddeneye",
+      "binary": "hiddeneye",
+      "family": "se",
+      "phase": "initial_access",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Legacy phishing-sim templates (lab)"
+    },
+    {
+      "name": "zphisher",
+      "binary": "zphisher",
+      "family": "se",
+      "phase": "initial_access",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Phishing-sim templates (authorized only)"
+    },
+    {
+      "name": "socialfish",
+      "binary": "socialfish",
+      "family": "se",
+      "phase": "initial_access",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Phishing-sim framework (authorized)"
+    },
+    {
+      "name": "mobsf",
+      "binary": "mobsf",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Mobile app SAST/DAST framework"
+    },
+    {
+      "name": "frida",
+      "binary": "frida",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Runtime instrumentation (owned device)"
+    },
+    {
+      "name": "frida-ps",
+      "binary": "frida-ps",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "List processes on USB device"
+    },
+    {
+      "name": "objection",
+      "binary": "objection",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Frida mobile exploration toolkit"
+    },
+    {
+      "name": "apktool",
+      "binary": "apktool",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "APK decode / rebuild"
+    },
+    {
+      "name": "jadx",
+      "binary": "jadx",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "APK to Java decompiler"
+    },
+    {
+      "name": "jadx-gui",
+      "binary": "jadx-gui",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "JADX graphical UI"
+    },
+    {
+      "name": "drozer",
+      "binary": "drozer",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Android IPC / component testing"
+    },
+    {
+      "name": "adb",
+      "binary": "adb",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Android Debug Bridge (owned device)"
+    },
+    {
+      "name": "apkleaks",
+      "binary": "apkleaks",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Secrets in APK strings"
+    },
+    {
+      "name": "quark-engine",
+      "binary": "quark",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Android malware score engine"
+    },
+    {
+      "name": "mvt-android",
+      "binary": "mvt-android",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Mobile Verification Toolkit Android"
+    },
+    {
+      "name": "mvt-ios",
+      "binary": "mvt-ios",
+      "family": "mobile",
+      "phase": "mobile",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Mobile Verification Toolkit iOS"
+    },
+    {
+      "name": "yara",
+      "binary": "yara",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Pattern matching"
+    },
+    {
+      "name": "osqueryi",
+      "binary": "osqueryi",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Host SQL inventory"
+    },
+    {
+      "name": "sleuthkit",
+      "binary": "fls",
+      "family": "forensics",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Sleuth Kit file listing"
+    },
+    {
+      "name": "faraday-cli",
+      "binary": "faraday-cli",
+      "family": "report",
+      "phase": "report",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Faraday reporting CLI"
+    },
+    {
+      "name": "sysreptor",
+      "binary": "sysreptor",
+      "family": "report",
+      "phase": "report",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Pentest report platform"
+    },
+    {
+      "name": "pwndoc",
+      "binary": "pwndoc",
+      "family": "report",
+      "phase": "report",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Collaborative pentest reports"
+    },
+    {
+      "name": "defectdojo",
+      "binary": "defectdojo",
+      "family": "report",
+      "phase": "report",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Vulnerability management"
+    },
+    {
+      "name": "certipy",
+      "binary": "certipy",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "AD CS enumeration / abuse paths (authorized)"
+    },
+    {
+      "name": "ldapdomaindump",
+      "binary": "ldapdomaindump",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "LDAP domain dump for AD recon"
+    },
+    {
+      "name": "rusthound",
+      "binary": "rusthound",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "BloodHound collector (Rust)"
+    },
+    {
+      "name": "coercer",
+      "binary": "coercer",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "Auth coerce tester (lab / authorized)"
+    },
+    {
+      "name": "ntlmrelayx",
+      "binary": "ntlmrelayx.py",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "Impacket NTLM relay (lab)"
+    },
+    {
+      "name": "mitm6",
+      "binary": "mitm6",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "restricted",
+      "origin": "ekay",
+      "summary": "IPv6 DNS takeover lab helper"
+    },
+    {
+      "name": "pretender",
+      "binary": "pretender",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "intrusive",
+      "origin": "ekay",
+      "summary": "mDNS/DNS spoof helper (lab)"
+    },
+    {
+      "name": "ldapsearch",
+      "binary": "ldapsearch",
+      "family": "ad",
+      "phase": "ad",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "OpenLDAP query client"
+    },
+    {
+      "name": "linpeas",
+      "binary": "linpeas.sh",
+      "family": "binary",
+      "phase": "post",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Linux priv-esc enumeration script"
+    },
+    {
+      "name": "winpeas",
+      "binary": "winPEASx64.exe",
+      "family": "binary",
+      "phase": "post",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "Windows priv-esc enumeration"
+    },
+    {
+      "name": "pspy",
+      "binary": "pspy64",
+      "family": "binary",
+      "phase": "post",
+      "risk": "passive",
+      "origin": "ekay",
+      "summary": "Linux process snooping (no root)"
+    },
+    {
+      "name": "peass-ng",
+      "binary": "peass",
+      "family": "binary",
+      "phase": "post",
+      "risk": "active",
+      "origin": "ekay",
+      "summary": "PEASS-ng priv-esc suite wrapper"
+    }
+  ]
+}

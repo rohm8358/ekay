@@ -432,7 +432,9 @@ def main() -> None:
                 key, _, val = line.partition("=")
                 key = key.strip()
                 val = val.strip().strip('"').strip("'")
-                os.environ[key] = val
+                # Shell / demo exports win over .env (needed for GIF capture on alt port).
+                if key and key not in os.environ:
+                    os.environ[key] = val
     path = os.environ.get("PATH", "")
     if tool_bin not in path.split(":"):
         os.environ["PATH"] = tool_bin + ":" + path
