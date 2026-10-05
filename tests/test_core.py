@@ -41,7 +41,9 @@ def test_catalog_report_counts_match():
     g = ScopeGuard(["127.0.0.1"])
     r = ToolRunner(g, allow_intrusive=False)
     report = catalog_report(r)
-    assert report["catalog"] == report["ready"] + report["missing"] + report["gated"]
+    assert report["catalog"] == (
+        report["ready"] + report["missing"] + report["gated"] + report["stub"]
+    )
     assert report["catalog"] >= 200
 
 

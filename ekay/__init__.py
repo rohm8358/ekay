@@ -1,3 +1,3 @@
-"""EKay v1.0 — concurrent authorized-testing orchestrator."""
+"""EKay v2 — red-team kill-chain orchestrator for authorized testing."""
 
-__version__ = "1.0.0"
+__version__ = "2.0.0"

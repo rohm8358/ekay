@@ -55,7 +55,12 @@ pip install -U pip
 pip install -r "$REPO_DIR/requirements.txt"
 
 echo
+echo "[ekay] Installing SE/phishing-sim tools (user-local, no root)..."
+bash "$REPO_DIR/scripts/install_phishing_tools.sh" || true
+
+echo
 echo "[ekay] Done."
 echo "[ekay] Start server:  cd $REPO_DIR && source ekay-env/bin/activate && python3 ekay_server.py"
 echo "[ekay] Check tools:   python3 -m ekay doctor"
-echo "[ekay] Expect some 'missing' until optional tools (gophish, mobsf, …) are installed manually."
+echo "[ekay] Phishing tools: bash $REPO_DIR/scripts/install_phishing_tools.sh"
+echo "[ekay] Expect some 'missing' until optional tools (mobsf, …) are installed manually."

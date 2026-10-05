@@ -1,9 +1,11 @@
-"""EKay tool catalog: HexStrike-class binaries plus EKay-only modules."""
+"""EKay tool catalog: HexStrike-class binaries + red-team kill-chain modules."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Literal
+
+from ekay.phases import phase_for_family
 
 Risk = Literal["passive", "active", "intrusive", "restricted"]
 
@@ -17,6 +19,10 @@ class ToolSpec:
     origin: Literal["hexstrike", "ekay"]
     summary: str
     default_args: tuple[str, ...] = ()
+
+    @property
+    def phase(self) -> str:
+        return phase_for_family(self.family)
 
 
 def _t(
@@ -284,6 +290,20 @@ EKAY_TOOLS: list[ToolSpec] = [
     _t("sysreptor", "sysreptor", "report", "passive", "ekay", "Pentest report platform"),
     _t("pwndoc", "pwndoc", "report", "passive", "ekay", "Collaborative pentest reports"),
     _t("defectdojo", "defectdojo", "report", "passive", "ekay", "Vulnerability management"),
+    # --- Red-team AD / identity (beyond typical HexStrike dumps) ---
+    _t("certipy", "certipy", "ad", "active", "ekay", "AD CS enumeration / abuse paths (authorized)"),
+    _t("ldapdomaindump", "ldapdomaindump", "ad", "active", "ekay", "LDAP domain dump for AD recon"),
+    _t("rusthound", "rusthound", "ad", "active", "ekay", "BloodHound collector (Rust)"),
+    _t("coercer", "coercer", "ad", "intrusive", "ekay", "Auth coerce tester (lab / authorized)"),
+    _t("ntlmrelayx", "ntlmrelayx.py", "ad", "restricted", "ekay", "Impacket NTLM relay (lab)"),
+    _t("mitm6", "mitm6", "ad", "restricted", "ekay", "IPv6 DNS takeover lab helper"),
+    _t("pretender", "pretender", "ad", "intrusive", "ekay", "mDNS/DNS spoof helper (lab)"),
+    _t("ldapsearch", "ldapsearch", "ad", "active", "ekay", "OpenLDAP query client"),
+    # --- Post-ex host triage (owned/compromised lab hosts) ---
+    _t("linpeas", "linpeas.sh", "binary", "active", "ekay", "Linux priv-esc enumeration script"),
+    _t("winpeas", "winPEASx64.exe", "binary", "active", "ekay", "Windows priv-esc enumeration"),
+    _t("pspy", "pspy64", "binary", "passive", "ekay", "Linux process snooping (no root)"),
+    _t("peass-ng", "peass", "binary", "active", "ekay", "PEASS-ng priv-esc suite wrapper"),
 ]
 
 
@@ -303,3 +323,17 @@ def families() -> dict[str, int]:
     for t in CATALOG:
         out[t.family] = out.get(t.family, 0) + 1
     return dict(sorted(out.items()))
+
+
+def phases_count() -> dict[str, int]:
+    out: dict[str, int] = {}
+    for t in CATALOG:
+        out[t.phase] = out.get(t.phase, 0) + 1
+    return dict(sorted(out.items()))
+
+
+def tools_for_phase(phase: str, *, origin: str | None = None) -> list[ToolSpec]:
+    items = [t for t in CATALOG if t.phase == phase]
+    if origin:
+        items = [t for t in items if t.origin == origin]
+    return items

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ekay"
-version = "1.0.0"
-description = "EKay — concurrent, scope-locked MCP pentest orchestrator (HexStrike-class catalog, new architecture)"
+version = "2.0.0"
+description = "EKay — red-team kill-chain MCP orchestrator (phases + findings, beyond HexStrike)"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }

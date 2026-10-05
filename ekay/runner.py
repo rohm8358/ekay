@@ -48,9 +48,29 @@ class ToolRunner:
         self._which_cache: dict[str, str | None] = {}
 
     def which(self, binary: str) -> str | None:
-        if binary not in self._which_cache:
-            self._which_cache[binary] = shutil.which(binary)
-        return self._which_cache[binary]
+        if binary in self._which_cache:
+            return self._which_cache[binary]
+        candidates = [binary]
+        try:
+            from ekay.aliases import BINARY_ALIASES
+
+            candidates.extend(BINARY_ALIASES.get(binary, ()))
+        except Exception:
+            pass
+        # Prefer project-local tool bin (shims / installed wrappers)
+        tool_bin = os.environ.get("EKAY_TOOL_BIN", "").strip()
+        found: str | None = None
+        for name in candidates:
+            if tool_bin:
+                local = os.path.join(tool_bin, name)
+                if os.path.isfile(local) and os.access(local, os.X_OK):
+                    found = local
+                    break
+            found = shutil.which(name)
+            if found:
+                break
+        self._which_cache[binary] = found
+        return found
 
     def availability(self) -> dict[str, bool]:
         return {spec.name: bool(self.which(spec.binary)) for spec in CATALOG_BY_NAME.values()}
